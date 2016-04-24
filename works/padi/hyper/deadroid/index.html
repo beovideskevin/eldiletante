@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Deadroid, una narración animada de El Diletante Digital</title>
+	<link rel="icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+	<link rel="shortcut icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+	<meta name="author" content="Kevin Beovides Casas">
+	<meta property="og:image" content="http://www.eldiletantedigital.com/style/images/art/deadroid.png" />
+	<meta property="og:title" content="Deadroid, una narración animada de El Diletante Digital" />
+	<meta property="og:site_name" content="El Diletante Digital, sitio web de Kevin Beovides Casas"/>
+	<meta property="og:url" content="http://www.eldiletantedigital.com" />
+	<meta property="og:description" content="El Diletante Digital es un sitio web dedicado a la literatura hipertextual, ciberliteratura, literatura digital, poesía electrónica, net.art, hacker art, arte de los nuevos medios, new media art y arte digital." />
+	<meta property="article:author" content="https://www.facebook.com/diletantedigital" />
+	<style type="text/css">
+    
+		body {
+		  margin: 5px 5px 5px 5px;
+		  font-family: verdana, geneva, arial, helvetica, sans-serif; 
+		  font-size: 11px; 
+		  background-color: #000000; 
+		  text-decoration: none; 
+		  font-weight: normal; 
+		  line-height: normal; 
+		  color: #ffffff;
+		  font-size: 16px;
+		  font-family: monospace;
+		}
+			 
+		a          { color: #3399cc; }
+		a:link     { color: #3399cc; text-decoration: underline; }
+		a:visited  { color: #3399cc; text-decoration: underline; }
+		a:active   { color: #3399cc; text-decoration: underline; }
+		a:hover    { color: #3399cc; text-decoration: underline; }
+
+	</style>    
+</head>
+  
+<body>
+	<div id="content">
+		<div id="deadroid_container">
+
+			
+
+		</div>
+ 
+	</div>
+	
+	<script src="../../../common/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="deadroid.js" ></script>
+	<script>
+		$.ajax({
+			  type: "POST",
+			  url: "/ajax/counter.php"
+			  //data: data,
+			  //success: success,
+			  //dataType: dataType
+			});
+			
+		var index = 0;
+		var frames = 0;
+		var i;
+		var first_time = true;
+		
+		i = setInterval(function () {
+			if (frames > 0) {
+				frames--;
+			}
+			else {
+				
+				if (first_time == true) {
+					$(window).scrollTop(0);
+					$("#deadroid_container").html("");
+					first_time = false;
+				}
+				
+				if (index < lines.length) {
+					if (lines[index].charAt(0) == '-') {
+						frames = parseInt(lines[index].substring(1), 10);
+					}
+					else if (lines[index].charAt(0) == '+') {
+						$("#deadroid_container").append(lines[index].substring(1));
+					}
+					else {
+						$("#deadroid_container").append("<br>" + lines[index]);
+					}
+					$(window).scrollTop($(document).height());
+					index++;
+				}
+				else {
+					index = 0;
+					buffer = "";
+					frames = 240;
+					first_time = true;
+				}
+			}
+		}, 50);
+	
+	</script>
+</body>
+</html>

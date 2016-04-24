@@ -1,0 +1,12 @@
+html {
+  background: #FFF;
+}
+
+body {
+  font-family: "times new roman", times, georigia;
+  color:  #000000;
+}
+
+.LeftSidebar, .RightSidebar, #Breadcrumb, #Footer, #Footer , .hide, .PageActions, .PageActions  {
+  display: none;
+}

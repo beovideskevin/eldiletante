@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Universal Image</title>
+		<link rel="icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+		<link rel="shortcut icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+		<style type="text/css">
+			body {
+			  /*margin: 20px 0px 0px 0px;*/
+			  font-family: verdana, geneva, arial, helvetica, sans-serif; 
+			  font-size: 11px; 
+			  background-color: #000000; 
+			  text-decoration: none; 
+			  font-weight: normal; 
+			  line-height: normal; 
+			}
+				 
+			a          { color: #3399cc; }
+			a:link     { color: #3399cc; text-decoration: underline; }
+			a:visited  { color: #3399cc; text-decoration: underline; }
+			a:active   { color: #3399cc; text-decoration: underline; }
+			a:hover    { color: #3399cc; text-decoration: underline; }
+
+		</style>    
+	</head>
+
+	<body id="body_id">
+		<div id="content">
+		
+			<div id="universal_container" style="margin: auto; text-align: center">
+		
+				 <canvas id="myCanvas" width="800" height="600">
+					<!-- Insert fallback content here -->
+				</canvas>
+		
+			</div>
+			
+			<div id="intro" style=" font-family: 'arial', san-serif; padding: 20px; font-size: 32px; background-color: #000; color: #fff; opacity: 0.5; filter: alpha(opacity=50); z-index: 1000; margin-left: -250px; margin-top: -40px;  position: absolute; top: 50%; left: 50%; width: 460px"></div>
+      
+		</div>
+	<script src="../../../common/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script>
+		var canvas, ctx, id, d, i, index, buff;
+		var arrayx = 800, arrayy = 600, ratio_px = 1;
+		var matriz = new Array(arrayx * arrayy); 
+		var image;
+		var a,b,c;
+		
+		$(document).ready(function() {
+			$("#body_id").css("margin-top", (($(window).height()-600)/2) + "px");
+			
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+			id = ctx.createImageData(ratio_px, ratio_px); // only do this once per page
+			d  = id.data;                  // only do this once per page
+			
+			for (index = 0; index < matriz.length; index++) {
+				a = Math.floor((Math.random() * 255));
+				b = Math.floor((Math.random() * 255));
+				c = Math.floor((Math.random() * 255));
+				
+				matriz[index] = a + 256 * b + 65536 * c;  
+				
+				//parseInt(Math.floor((Math.random() * 0xffffff) + 1), 10);
+				
+				//parseInt(Math.random().toString(16).substr(-6), 16); 
+				
+				//parseInt(Math.floor((Math.random() * 0xfffff0) + 1), 10); 
+				//0x000000; //
+			}
+			
+			//pinta_matriz();
+			
+			image = new Image();
+			image.src = "random.jpg";
+			$(image).load(function() {
+				ctx.drawImage(image, 0, 0);
+				
+				index = arrayx * arrayy - 1;
+			
+				i = setInterval(function () {
+					if (matriz[index] >= 0xffffff) {
+						matriz[index] = 0x000000;
+						$("#intro").html("Seting pixel " + (parseInt(index / arrayx, 10) + 1) + "," + (parseInt(index % arrayx, 10) + 1) + " to #000000");
+						
+						draw_pixel (ctx, id, d, parseInt(index % arrayx, 10), parseInt(index / arrayx, 10), ratio_px, matriz[index]);
+						
+						if (index > 0)
+						  index--;
+						else  
+						  index = arrayx * arrayy - 1;
+					}
+					else {
+						matriz[index] +=  0xF;
+						buff = "000000" + matriz[index].toString(16);
+						$("#intro").html("Seting pixel " + (parseInt(index / arrayx, 10) + 1) + "," + (parseInt(index % arrayx, 10) + 1) + " to #" + buff.slice(-6));
+						
+						draw_pixel (ctx, id, d, parseInt(index % arrayx, 10), parseInt(index / arrayx, 10), ratio_px, matriz[index]);
+						
+						index = arrayx * arrayy - 1;
+					}  
+					
+				}, 10);
+			
+			});
+			
+        });
+		
+		function pinta_matriz() {
+			var j;
+			
+			for (j = 0; j < matriz.length ; j++) {
+				draw_pixel(ctx, id, d, parseInt(j % arrayx, 10), parseInt(j / arrayx, 10), ratio_px, matriz[j]);
+			}
+		}
+		
+		function draw_pixel (ctx, id, d, x, y, z, c) {
+			var j;
+			
+			var r = c & 0xff0000;
+			var g = c & 0x00ff00;
+			var b = c & 0x0000ff;
+			
+			for (j = 0; j < (z*z) * 4; j += 4) {
+				d[j] = r;
+				d[j + 1] = g;
+				d[j + 2] = b;
+				d[j + 3] = 0xff;
+			}
+			ctx.putImageData( id, x * z, y * z); 
+		}
+	</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">    
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <title>Greca, un poema Hipertextual de El Diletante Digital.</title>
+  <link rel="icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+  <link rel="shortcut icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+  <script src="../../../common/tools.js" ></script>
+  <link rel="stylesheet" href="../../../common/tools.css" type="text/css" >
+  <link rel="stylesheet" type="text/css" href="scripts/greca.css">
+ 
+  <style media="screen">
+
+    #skyline {
+      width: 500px;
+      height: 375px;
+      background: url(imagenes/guarida.jpg);
+      margin: 10px auto; padding: 0;
+      position: relative;
+    }
+    #skyline li {margin: 0; padding: 0; list-style: none; position: absolute; top: 0;}
+    
+    #skyline li, #skyline a {height: 375px; display: block;}
+    #panel1b {left: 0; width: 250px;}
+    #panel2b {left: 250px; width: 250px;}
+    
+    #panel1b a:hover {background: transparent url(imagenes/guarida.jpg) 0 -375px no-repeat;}
+    #panel2b a:hover {background: transparent url(imagenes/guarida.jpg) -250px -375px no-repeat;}
+
+  </style>
+
+  <script language="javascript1.2">
+    function Abriruno () {
+      var w1=open('guarida1.html','guarida1','toolbar=no,directories=no,menubar=no,status=no,resizable=yes,width=600,height=500,scrollbars=yes,top=0,left=0');
+    }
+    function Abrirdos () {
+      var w1=open('guarida2.html','guarida2','toolbar=no,directories=no,menubar=no,status=no,resizable=yes,width=600,height=500,scrollbars=yes,top=0,left=0');
+    }
+    
+  </script>
+
+</head>
+
+<body>
+
+<span id="titulo"><img src="imagenes/title.gif" height="120" width="230"></span>
+
+<br >
+<p align="center">
+
+
+<ul id="skyline">
+  <li id="panel1b"><a href="javascript:;" onClick="Abriruno();"></a></li>
+  <li id="panel2b"><a href="javascript:;" onClick="Abrirdos();"></a></li>
+ </ul>
+<br >
+(pase el mouse sobre la imagen y haga click sobre las mitades)
+</p>
+
+<div id="menu">
+<a href="index.html"><img src="imagenes/back.gif" alt="" border="0" align="absbottom" style="border: 0px solid ; width: 16px; height: 16px;">Volver al Inicio</a>
+<a href="javascript:;" onClick="AbrirVentana('esquema.html','esquema','yes','900','400');"><img src="imagenes/mapa.gif" width="16" height="16" border="0" align="absbottom">Mapa del Texto</a>
+</div>
+
+<span id="abajo"><br>
+</span>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<div class="swiper-wrapper"> <a class="arrow-left" href="#"></a> <a class="arrow-right" href="#"></a>
+  <div class="swiper-container gallery">
+    <div class="swiper">
+      <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy1.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy2.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy3.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy4.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy5.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy6.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy7.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy8.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+	  <div class="item">
+        <figure class="frame"><img src="works/artware/intimacy/images/intimacy9.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+    </div>
+    <!-- /.swiper -->
+  </div>
+  <!-- /.swiper-container -->
+</div>
+<!-- /.swiper-wrapper -->
+
+<div class="container inner">
+  <div class="box">
+	  
+    <h1 class="post-title">Intimacy</h1>
+    <p>Instalación interactiva en colaboración con la artista Andrea Sunder-Plassmann. La obra consiste de la proyección de un video donde una mariposa aletea frenéticamente. La velocidad del movimiento se controla al acariciar un coco, lo que logra que la mariposa tenga movimientos más reposados. Esta pieza explora la sensibilidad y la importancia de la intimidad en el espíritu humano. Pretende “enseñar” al espectador a acariciar la fragilidad del alma.</p>
+    <div class="divide10"></div>
+    <!-- <a href="#" class="btn">More Info</a> -->
+    
+  </div>
+  <!-- /.box -->
+</div>
+<!-- /.container -->
+
+
+
+
+<!-- INSERT PAGE SCRIPTS HERE -->
+<script type="text/javascript">
+	$('.swiper-container.gallery').each(function(){
+		  $(this).swiper({
+		     grabCursor: true,
+		    slidesPerView: 'auto',
+		    wrapperClass: 'swiper',
+		    slideClass: 'item',
+		    offsetPxBefore: 0,
+		     offsetPxAfter: 0
+		  });
+		
+		  var $swipers = $(this);
+		
+		  $swipers.siblings('.arrow-left').click(function(){
+		$swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex-1);
+		return false;
+		});
+		$swipers.siblings('.arrow-right').click(function(){
+		$swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex+1);
+		return false;
+		});
+	});
+</script>

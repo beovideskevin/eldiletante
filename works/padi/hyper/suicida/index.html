@@ -1,0 +1,110 @@
+<html onclick="document.forms[0].l.focus();"><head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+<link rel="shortcut icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+<title>En el Cuarto de un Suicida, un cuento interactivo de El Diletante Digital</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/messages.js" type="text/javascript"></script>
+<script src="js/items.js" type="text/javascript"></script>
+<script src="js/map.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
+</head>
+<body style="overflow: hidden" onclick="document.forms[0].l.focus();">
+"En el cuarto de un suicida."<br>
+<div id="screen">
+</div>
+<form onsubmit="return new_line();"><table id="il"><tbody><tr><td>&gt;</td><td id="ii"><input name="l" id="l" onkeydown="return handle(event);" autocomplete="off" type="text"></td></tr></tbody></table></form>
+<script type="text/javascript">
+	// los objetos del documento
+	var line;
+	var l;
+	var scr;
+	
+	// partes de la oracion
+	var part;
+	var parts = Array();
+	
+	// historia de comandos
+	var hist = [];
+	var hi = -1;
+
+	// inventario
+	var inv = [];
+	var invcount = 0;
+	var invmax = 5;
+
+	// punto donde empieza la historia
+	var loc = 'cama';
+		
+	// tiempo de espara para los movimientos de la mujer 
+	var minwait = 1000;
+	var maxwait = 10000;	
+
+	// arranca cuando el documento este listo
+	$(document).ready(function () {
+		line = document.forms[0].l;
+		l = document.getElementById('l');
+		scr = document.getElementById('screen');
+		
+		$("#screen").html("");
+		interpret('mirar');
+		line.focus();
+		$("html, body").animate({ scrollTop: $(document).height() }, "fast");
+	});
+	
+	// screen handling crap 
+	function new_line(){
+		var p = document.createElement('pre');
+		var v = line.value;
+		var ti = v;
+		v = v.replace(/&/,'&amp;');
+		v = v.replace(/</,'&lt;');
+		if (!v) {
+			v = '<br />';
+		}
+		else {
+			hist[hist.length] = v;
+			hi = hist.length;
+		}	
+		p.innerHTML = '>' + v;
+		line.value = '';
+		scr.appendChild(p);
+		interpret(ti);
+		line.focus();
+		$("html, body").animate({ scrollTop: $(document).height() }, "slow");
+		return false;
+	}	
+
+	function handle(e) {
+		document.getElementById('kc').innerHTML = e.keyCode;
+		if (e.keyCode == 38) {
+			if (hi >= 1) {
+				hi--;
+				line.value = hist[hi];				
+			}
+			else {
+			    hi = -1;
+				line.value = '';
+			}
+		}
+		if (e.keyCode == 40) {  //&& hi<hist.length-1
+			if (hi < hist.length - 1) {
+				hi++;
+				line.value = hist[hi];
+			}
+			else{
+			    hi = hist.length;
+				line.value='';
+			}
+		}
+		if (e.keyCode == 9) {
+			line.focus();
+			$("html, body").animate({ scrollTop: $(document).height() }, "slow");
+		}
+		return true;
+	}
+
+</script>
+<div id="kc">83</div>
+</body></html>

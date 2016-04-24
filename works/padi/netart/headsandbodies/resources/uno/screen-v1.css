@@ -1,0 +1,1897 @@
+/* Greenpeace Planet2 Front-end */
+
+/*<group=Basic Styles>*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {  
+   /* background-color: #867359; org. brown */
+   background-color: #D2E5CD;
+}
+
+body {
+  font-family: verdana;
+  font-size: 62.5%;
+  color: #333333;
+  text-align: center;	
+}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #003300;
+}
+
+a:hover {
+  color: #F60;
+}
+
+.hide {
+  display: none;
+}
+
+legend, label {
+  display: none;
+}
+
+.disabled {
+  color: #999999;
+}
+
+a.act {
+  padding-left: 10px;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow.png) no-repeat 0 3px;
+  color: #1B6B2C;
+  font-size: 1em;
+  font-weight:  bold;
+  text-decoration:  none;
+}
+
+a.act:hover {
+  color: #F60;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin: 0 0 7px 0;
+  padding: 0;
+}
+
+/*</group>*/
+
+/*<group=Global layout and styling>*/
+
+#OuterContainer {
+  margin: 10px auto;
+  width: 740px;
+  border: 5px solid #FFF;
+  background-color: #FFF;
+  text-align: left;
+  padding: 0;
+}
+
+#OuterContainer {
+  text-align: left;  
+}
+
+#Header a {
+  display: block;
+  width: 740px;
+  height: 80px;
+  background: url(../../../../headsandbodies/resources/graphics/header-banner-fish.png) no-repeat;
+  margin-bottom: 5px;
+  float: left;
+}
+
+#Header a span {
+  display: none;
+}
+
+#ContentContainer {
+  float: left;
+  margin-right: 5px;
+  width: 430px !important;
+}
+
+#ContentContainerFull {
+  float: left;
+  margin-right: 5px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.Content h1 {
+  color: #003300;
+  display: block;
+  font-size: 1.4em;
+  margin-top:  10px;
+}
+
+.Content h2 {
+  color: #1C6B2C;
+  font-size: 1.1em;
+  /* white-space: nowrap; */
+}
+
+.Content h2 a {
+  color: #1C6B2C;
+  font-size: 1.1em;
+  text-decoration: none;
+  display: block;
+}
+
+.Content p {
+  line-height: 1.1;
+  padding: 0 0 8px 0;
+}
+
+.LeftSidebar {
+  width: 150px;
+  padding: 0;
+  float: left;
+  margin-right: 5px;
+  overflow: hidden;
+}
+
+.LeftSidebar .Banner, .RightSidebar .Banner {
+  border: 0 !important;
+}
+
+.RightSidebar {
+  float: left;
+  width: 150px;
+  padding-bottom: 10px;
+  _margin-right: -10px;
+  overflow: hidden;
+}
+
+.LeftSidebar a.act,
+.RightSidebar a.act {
+  /* IE 5.0 fix  */
+  float:left;  
+}
+
+.LeftSidebar h2, .RightSidebar h2 {
+  background: #96DA83;
+  color: #003300;
+  font-size: 1em;
+  padding: 6px 0 6px 10px;
+  text-transform: uppercase;  
+}
+
+/*</group>*/
+
+/*<group=Footer>*/
+
+#Footer {
+  clear: both;
+  width:  740px;
+  border-top: 42px solid #FFF;
+  padding: 4px 0;
+  background: #238C00 url(../../../../headsandbodies/resources/graphics/greenpeace-footer-logo.gif) 640px 50% no-repeat;
+  height:  17px;
+  margin: 0;
+}
+
+#Footer div.LinkBox {
+  width: 740px; 
+  border: none;
+  background: transparent; 
+  margin: 0;
+  padding: 0;
+}
+
+#Footer h3 {
+  float:  right;
+  display: block;
+  background: url(../../../../headsandbodies/resources/graphics/greenpeace-footer-logo.png) right no-repeat;
+  padding-right: 100px;
+  margin-right: 10px;
+  color:  #FFF;
+  width: 87px;
+  height:  17px;
+}
+
+#Footer h2 {
+  float: right;
+  color:  #FFF;
+  font-size: 1em;
+  margin-right: 110px;
+  display: inline;
+}
+
+#Footer h3 span {
+  display: none;
+}
+
+#Footer ul {
+  float:  left;
+  list-style: none;
+  display: inline;
+}
+
+#Footer ul li {
+  display: inline;
+  float: left;
+  padding-right: 5px;
+}
+
+#Footer a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  background: transparent;
+}
+
+#Footer div#copyright {
+  color: #fff;
+  float: right;
+}
+
+a.rss {
+  display: block !important;
+  height: 15px !important;
+  width: 80px !important;
+  background: url(../../../../headsandbodies/resources/graphics/rss-full-feed.png) no-repeat !important;
+  float:left;
+  margin-left: 5px;
+}
+
+a.rss span {
+  display: none;
+}
+  
+/*</group>*/
+
+/*<group=SidebarIncludelet>*/
+
+.SidebarIncludelet {
+  background: #D3FBCA;
+  color: #003300;
+  padding-bottom: 8px;
+  margin-bottom: 5px;
+  width: 150px;
+  float: left;
+}
+
+.SidebarIncludelet p {
+  padding:  5px 0 10px 10px;
+  font-size: 1em;
+}
+
+.SidebarIncludelet h2, .SidebarIncludelet .ItemList h2 {
+  background: #96DA83;
+  color: #003300;
+  font-size: 1em;
+  padding: 6px 0 6px 10px;
+  text-transform: uppercase;
+}
+
+.SidebarIncludelet h3 {
+  background: #96DA83;
+  color: #003300;
+  font-size: 1em;
+  padding: 6px 0 6px 10px;
+  text-transform: uppercase;
+}
+
+.SidebarIncludelet h4 {
+  font-weight:  bold;
+  font-size: 1em;
+  margin-left:  10px;
+  margin-top: 6px;
+  padding-bottom: 0;  
+}
+
+.SidebarIncludelet div.body {
+  color:  #1C6B2C;
+  width: 150px;
+}
+
+.SidebarIncludelet div.body p {
+  height: 1%;
+}
+
+.SidebarIncludelet fieldset {
+  border: none;
+}
+
+.SidebarIncludelet legend {
+  display: none;
+}
+
+/*</group>*/
+
+/*<group=Content Hub - RSS reader>*/
+
+.ContentHub, .RssReader {
+  background-color: #D3FBCA;
+  margin-bottom: 5px;
+}
+
+.ContentHub ul, .RssReader ul {
+  padding: 5px;
+}
+
+.ContentHub a, .RssReader a {
+  color: #1B6B2C; 
+  display: block;
+  font-weight: bold;
+  text-decoration: none;
+  background:  url(../../../../headsandbodies/resources/graphics/act-arrow.png) no-repeat 0 50%;
+  padding-left:  10px;
+}
+
+.ContentHub a:hover, .RssReader a:hover {
+  color: #F60;
+} 
+
+a.image {
+  background:  url(../../../../headsandbodies/resources/graphics/icon-image.gif) no-repeat;  
+  padding-left: 22px;
+}
+
+a.video, a.flash {
+  background:  url(../../../../headsandbodies/resources/graphics/icon-video.gif) no-repeat;    
+  padding: 0 0 8px 22px;
+}
+
+a.audio {
+  background:  url(../../../../headsandbodies/resources/graphics/icon-audio.gif) no-repeat;  
+  padding: 0 0 8px 22px;
+}
+ 
+a.reports {
+  background:  url(../../../../headsandbodies/resources/graphics/icon-pdf.gif) no-repeat;  
+  padding: 0 0 8px 22px;
+}
+
+a.documents {
+  background:  url(../../../../headsandbodies/resources/graphics/icon-document.gif) no-repeat;  
+  padding: 0 0 8px 22px;
+}
+
+/*</group>*/
+
+
+/*<group=Linkbox>*/
+
+.LinkBox {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;  
+  border-top: 1px dotted #003366;
+  border-bottom: 1px dotted #003366;
+  background-color: #EDEDED;
+  /* Avoid IE problem when image is same width as box*/
+  overflow: hidden;
+}
+
+.LinkBox img {
+  float: left;
+  margin-right: 5px;
+}
+
+.blue {
+  background: #C5ECFD;
+}
+
+.LinkBox h2 {
+  padding: 3px 0;
+  color:  #003300;
+}
+
+.LinkBox h2 a {
+  color: #003300;
+}
+
+.LinkBox.blue h2 a {
+  color: #003366;
+}
+
+.LinkBox h3 {
+  color:  #333333;
+  font-size: 1em;
+  font-weight: normal;
+  padding: 3px 0;
+}
+
+.LinkBox ul li {
+  padding: 0;
+  margin: 4px 0;
+}
+
+.LinkBox ul li a {
+  color: #003366;
+  color: #003300;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow.png) 0% 50% no-repeat;
+  text-decoration: none;
+  padding-left: 10px; 
+  height: 1%;
+}
+
+.LinkBox.blue ul li a {
+  color: #003300;
+  background: url(../graphics/navigation-bluearrow.png) 0% 50% no-repeat;
+}
+
+.LinkBox ul li a:hover {
+  text-decoration: underline;
+ }
+ 
+/*</group>*/
+
+
+/*<group=Box>*/
+
+.Box {
+  float: left;
+  width: 430px;
+  margin-bottom: 10px;  
+}
+
+.LeftSidebar div.Box, .RightSidebar div.Box {
+  float: left;
+  margin-bottom: 10px;  
+  width: 150px;
+}
+
+.ThreeGraphicLinks div {
+  width: 140px;
+  float: left;
+  margin-right: 5px; 
+}
+
+.ThreeGraphicLinks div.last {
+  margin-right: 0; 
+}
+
+.ThreeGraphicLinks a.act {
+  color: #F60;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow-orange.png) no-repeat 0 50% !important;
+  padding-left: 14px;
+float: left;
+}
+
+.Box.green {
+  background-color: #D3FBCA;  
+  padding: 9px 0;
+  border-top: 1px dotted #009900;
+  border-bottom: 1px dotted #009900;
+}
+
+.Box.green h2 {
+  float: left;
+  font-size: 1em;
+  margin-left:  6px;
+ }
+
+.Box.green a.act {
+  float: right;
+  font-size: 1em;
+  margin-right:  6px;
+ }
+
+.inlinebox {
+  float: left;
+  clear: left;
+  background-color: #EDEDED;
+  border: 1px dotted #666666;
+  width: 300px;
+  margin: 5px 5px 5px 0;
+  font-size: 0.9em;
+  padding: 0;
+}
+
+.inlinebox img {
+  float: left;
+  margin: 0 5px 0 0;  
+  width: 105px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.inlinebox a.act {
+  margin: 5px 0 -5px 0;
+  float: left;
+  padding-bottom: 0;
+}
+
+.inlinebox p {
+  width: 185px;
+  float: left;
+  padding-bottom: 0; 
+  margin: 5px 0 0 0; 
+}
+
+/*</group>*/
+
+
+/*<group=Home Page>*/
+#WelcomeIncludelet div.action {
+  float: left;  
+  margin-right: 5px;
+  width:  140px;
+}
+
+#WelcomeIncludelet ul {
+  list-style: none;
+}
+
+#WelcomeIncludelet ul li {
+  display: inline;
+  float: left;
+  margin-right: 5px;
+}
+
+#WelcomeIncludelet ul li.last {
+  margin-right: 0;
+}
+
+#WelcomeIncludelet h3 {
+  font-weight:  normal;
+  font-size: 1em;
+  margin:  5px 0;
+}
+
+#WelcomeIncludelet div.action.last {
+  margin:  0;  
+}
+
+#WelcomeLocal {
+  clear: both;
+  background: #D3FBCA;
+  padding: 15px 0;
+  margin:  10px 0;
+  border-top: 1px dotted #1C6B2C;
+  border-bottom: 1px dotted #1C6B2C;
+}
+
+#WelcomeIncludelet a.act {
+  padding:  7px 0 7px 12px;
+  display:  block;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow-orange.png) no-repeat 0 50% !important;
+  color: #FF6633;
+  font-size: 1em;
+  font-weight:  bold;
+  text-decoration:  none;  
+}
+
+#WelcomeLocal a {
+  color: #1C6B2C;  
+  font-weight: bold;
+  margin-left: 4px;
+  text-decoration: none;
+  display:  inline;
+}
+
+#WelcomeLocal ul {
+  list-style:  none;
+}
+
+#WelcomeLocal ul li {
+  display:  inline;
+}
+
+#WelcomeLocal h2 {
+  float: left;
+}
+
+#WelcomeLocal a.act {
+  margin-left: 10px;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow.png) no-repeat 0 50% !important;
+}
+
+/*</group>*/
+
+/*<group=Item List>*/
+
+.Content .ItemList {
+  background-color: #EDEDED;
+  border-top: 1px dotted #666666;
+  border-bottom: 1px dotted #666666;
+  margin-bottom: 10px;
+  float: left !important;
+  width: 430px;
+  overflow: hidden;
+}
+
+.Content .ItemList a.act {
+  _float: left;
+  clear: both;
+}
+
+.Content .ItemList h2 {
+  color: #003300;
+  border-bottom: 1px dotted #666666; 
+  padding: 5px 0px;
+  font-size: 1.3em;
+}
+
+.ItemList h3 {
+  color: #003300;
+}
+
+.Content .ItemList ul {
+  list-style: none;
+}
+
+.Content .ItemList .MoreItems {
+  clear: both;
+  float: left;
+  border-top: 1px dotted #666666;
+  padding: 10px 5px;
+  width: 420px;
+}
+
+.Content .ItemList .MoreItems form {
+  display: block;
+  float: right;
+  margin:  0 0 10px 0;
+}
+
+.Content .ItemList .MoreItems a.act {
+  float: left;
+  margin-top: 4px;
+}
+
+.Paginator {
+  padding: 10px;
+  clear: both;
+  border-top: 1px dotted #666666;
+  text-align: center;
+}
+
+.Paginator .next {
+  background: url(../../../../headsandbodies/resources/graphics/paginate-next.png) no-repeat 100% 50%;
+  padding-right: 10px;
+  margin-right: 10px;
+  _width: 7em;
+}
+
+.Paginator .prev {
+  background: url(../../../../headsandbodies/resources/graphics/paginate-prev.png) no-repeat 0 50%;
+  padding-left: 10px;
+  _width: 9em;
+}
+
+.LeftSidebar .ItemList, .RightSidebar .ItemList {
+  background: #D3FBCA;
+  color: #003300;
+  padding-bottom: 8px;
+  margin-bottom: 5px;
+  float: left; 
+  width: 150px;
+}
+
+.LeftSidebar .ItemList ul, .RightSidebar .ItemList ul {
+  list-style: none;
+}
+
+.LeftSidebar .ItemList li, .RightSidebar .ItemList li {
+  padding-bottom: 5px;
+  width: 150px !important;
+}  
+
+.LeftSidebar .ItemList a, .RightSidebar .ItemList a {
+  padding-left: 12px;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow.png) no-repeat 0 50% !important;
+  float: left;
+  font-size: 1em;
+  font-weight:  bold;
+  text-decoration:  none;  
+  display: block;
+  width: 128px !important;
+  margin: 2px 5px;
+}
+
+/*
+.LeftSidebar .ItemList h2, .RightSidebar .ItemList h2 {
+  background-color: #96DA83 !important;
+  _padding: 5px 0 5px 20px;
+  _margin: -10px 0 0 -10px;
+  _width: 160px !important;
+}
+*/
+  
+.LeftSidebar .ItemList h2 a, .RightSidebar .ItemList h2 a {
+  background: none !important;
+  background-color: #96DA83 !important;
+  float: left;
+  padding: 0;
+  margin-left: -8px;
+  width: 150px !important;
+}
+
+
+.ItemList-Title {
+  float: left;
+  width: 100%;
+  margin: 3px 0;
+}
+
+.ItemList-Title a {
+  display: block;
+  padding-left: 10px;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow.png) no-repeat 0 2px;
+  color: #1B6B2C;
+  font-size: 1em;
+  font-weight:  bold;
+  text-decoration:  none !important;
+  margin-left: 5px;
+}
+
+.ItemList-Title a:hover {
+  color: #F60;
+}
+
+
+.ThreeAcross {
+  float: left;
+  padding-bottom: 5px;
+}
+
+.ThreeAcross li {
+  float: left;
+  width: 140px;
+  padding: 10px 5px 10px 0;
+  display: block;
+}	
+
+.ThreeAcross li.last {
+  padding-right: 0;
+}
+
+  
+/*</group>*/
+
+/*<group=Mini-Ticker>*/
+
+.MiniTicker {
+  background-color: #EDEDED;
+  border-top: 1px dotted #666666;
+  border-bottom: 1px dotted #666666;
+  padding: 9px 0;
+  float: left;
+  width: 430px;
+  margin-bottom: 10px;
+}
+
+.MiniTicker div {
+  float: left;
+  padding: 0;
+  max-width: 60%;
+  _height: 1em;
+  _overflow: hidden;
+}
+
+.MiniTicker div marquee {
+  padding: 0;
+  margin: 0;
+}
+ 
+.MiniTicker h2 {
+  float: left;
+  margin-left: 6px;
+  margin-right: 10px;
+}
+
+.MiniTicker ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  float: left;
+} 
+
+.MiniTicker li {
+  display: inline;
+  margin: 0 10px;
+  float: left;
+} 
+
+.MiniTicker a {
+  color:  #f60;
+  text-decoration: none;
+  float: left;
+}
+  
+/*</group>*/
+
+/*<group=Content Items>*/
+
+.PublishDate {
+  color: #1C6B2C;
+  white-space: nowrap;
+}
+
+.ItemList-Title p.PublishDate {
+  clear: both;
+  margin-left: 15px;
+  _margin-left: 20px;
+}
+
+.city {
+  text-transform: uppercase;
+}
+
+.author {
+  padding: 10px 0;
+  font-style: italic;
+  margin-left:  10px;
+} 
+
+.footnotes {
+  color: #999999;  
+} 
+
+/*</group>*/
+
+/*<group=Full>*/
+
+.PageHeader {
+  float: left;
+  border-bottom: 1px dotted #666666;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.PageHeader h1 {
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+
+.PageHeader h2 {
+  color: #003300;
+  padding: 0;
+  margin: 0 0 5px 0;
+  background: none !important;
+  width: 430px;
+  white-space: normal !important;
+}
+
+.PageHeader .PublishDate {
+  float: left;
+}
+
+.PageActions {
+  list-style: none;
+  float: right;
+  padding: 0;
+  margin: 2px 0 4px 0;
+}
+
+.PageActions li {
+  display: inline;
+  margin-left: 20px;
+}
+
+/* The visited/link/hover/active is necessary because IE gets precedence wrong,
+   and inherits from the top level link styles.
+*/
+
+.PageActions li a
+{
+  padding-left: 12px;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow.png) no-repeat 0 50%;
+  color: #1C6B2C;
+  font-size: 1em;
+  font-weight:  bold;
+  text-decoration: none; 
+  _width: 50px;
+}
+
+.PageActions li a:hover
+{
+  color: #F60;
+}
+
+.Full h3 {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.Full p {
+  margin: 10px 0;
+}
+
+.body ul, .body ol {
+  list-style: circle;
+  padding: 3px 0;
+  margin-left: 15px;
+}
+
+.body ul li, .body ol li {
+  margin: 3px 0;
+}
+
+.teaser-para {
+  border: none;
+  font-weight: bold;
+}
+
+.Full p.teaser {
+  font-weight: bold;
+}
+
+.Full ul.Contacts {
+  list-style: none;
+  font-weight: bold;
+}
+
+.Full ul.Contacts li {
+  margin-top: 10px;
+}
+
+.Full ul.Contacts address {  
+  font-weight: normal;
+}
+
+.Full .Image.Dresser {
+  float: left;
+  clear: left;
+  margin:  0 5px 5px 0;
+  padding-bottom: 5px;
+  background-color: #EDEDED;
+  width: 180px;
+}
+
+.Full .Image img {
+  margin-bottom: 3px;
+}
+
+.Full .Image a.act,
+.Image a.act {
+  margin: 2px 0 0 5px;
+  float: left;
+  clear: left;
+  text-align: left;
+}
+
+.Full .Image p {
+  clear: left;
+  float: left;
+  padding-left: 5px;
+  max-width: 156px;
+  _width: 156px;
+}
+
+.Full .Section {
+  /* border-bottom: 1px dotted #666666; */
+  float: left;
+  margin-bottom: 10px;
+  clear: both;
+  width: 100%;
+}
+
+.Section h3 {
+  font-size: 1.2em;
+}
+
+.ContentFields {
+  margin: 1em 0;
+  display: block;
+  clear: left;
+}
+
+.ContentFields th {
+  padding-right: 1em;
+  vertical-align: top;
+  text-align: left;
+}
+
+.ContentFields td {
+  vertical-align: top;
+  text-align: left;
+}
+  
+/*</group>*/
+
+/*<group=Teaser>*/
+
+.Teaser {
+  padding: 0 0 10px 0;
+  margin: 10px 0 0 0;
+  font-size: 1em;
+  font-weight: normal;
+  float: left;
+  border-bottom: 1px dotted #666666; 
+  width: 430px;
+}
+
+.left {
+  width: 105px;
+  margin-right: 10px;
+  float: left;
+}
+
+.NewsTeaser .left, .PressTeaser .left {
+  margin: 4px 0 0 0 ;
+}
+
+
+.right {
+  margin: 0 20px 0 0;
+  float: right;
+  width: 290px;  
+  display: inline; /* IE double margin hack */
+}
+
+.FullWidthTeaser {
+  width: 400px; 
+  padding: 5px; 
+  float: left;
+}
+/* This does not work in IE. Too bad for the IE-users */
+
+.left:empty {
+  display: none;
+}
+
+.left:empty+.right {
+  width: 400px;
+  float: left;
+  padding: 5px;
+}
+
+/* End of hack that does not work for IE */
+
+.ImageTeaser .left {
+  width: 180px;
+  text-align: center;
+}
+
+.ImageTeaser .right {
+  float: left;
+  width: 220px;
+}
+
+.ImageTeaser .right p {
+  margin-left: 0;
+}
+
+.Teaser .right li a.act {
+  display: block;
+}
+
+.Teaser .Image {
+  float: left;
+}
+
+.VerticalTeaser {
+  border: none;
+  width: 140px;
+  float:  left;
+  margin: 5px 5px 0 0;
+}
+
+.Teaser h3, .VerticalTeaser h3, .Teaser h3 a, .VerticalTeaser h3 a {
+  font-size: 1.1em;
+  color: #003300;
+  font-weight: bold;
+  text-decoration: none;
+  background: none;
+  margin: 2px 0 7px 0;
+}
+
+.VerticalTeaser .bottom {
+  margin: 0;
+  padding: 0 6px;
+  _padding: 0 !important;
+}  
+
+.VerticalTeaser .bottom p {
+  margin: 0;
+}
+
+
+.Teaser .bottom li {
+  padding: 0 0 7px 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.VerticalTeaser ul.actions li {
+  clear: both;
+  padding: 2px 0;
+  width: 120px;
+}
+
+.last .VerticalTeaser {
+  margin-right: 0;
+}
+
+.ReportTeaser h3 { 
+  padding-bottom: 0;
+  margin-bottom: 0; 
+}
+
+.last .Teaser, .last .ScreensaverTeaser {
+  border: none;
+}
+
+.ScreensaverTeaser .left {
+  width: 105px !important;
+  float: left !important;
+  margin: 4px 0 0 0;
+  padding: 0 !important; 
+}
+ 
+.right li {
+  padding: 0 !important;
+  margin: 0 17px 5px 0 !important;
+  display: block;
+}
+
+.right li a.act {
+  display: inline !important;
+}
+
+.bottom a.act {
+  width: 120px;  
+}
+
+ul.actions li {
+  clear: both;
+  padding: 5px 0;
+}
+
+ul.actions li a {
+  padding-left: 10px;
+  background: url(../../../../headsandbodies/resources/graphics/act-arrow.png) no-repeat 0 50%;
+  color: #1B6B2C;
+  font-size: 1em;
+  font-weight:  bold;
+  text-decoration: none;
+  display: block;
+}
+
+ul.actions li a:hover {
+  color: #F60;
+}
+
+.Section ul.actions {
+  list-style: none !important;
+}
+
+.Section ul.actions li a {
+  white-space: normal !important;
+}
+
+/*</group>*/
+
+/*<group=Images>*/
+
+.caption {
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+
+.Story {
+  float: left;
+  clear: left;
+  margin:  0 5px 5px 0;
+  padding-bottom: 0;
+  background-color: #EDEDED;
+  width: 140px;
+}
+
+.Story p.caption {
+  width: 130px;  
+}
+
+/*</group>*/
+
+
+/*<group=Banner>*/
+
+.Banner {
+  border-top: 1px dotted #666666;
+  border-bottom: 1px dotted #666666;
+  margin-bottom: 10px;
+  float: left;
+}
+
+.Banner h2 {
+  display: none;
+}
+  
+/*</group>*/
+
+/*<group=Menu>*/
+
+/* 
+  Note: the menu styles are quite complicated. Since IE does 
+  not support child selectors, all styles from the top levels
+  have to be overridden for lower levels, with higher specificity.
+*/
+
+#Menu {
+  width: 150px;
+  margin-bottom: 5px;
+}
+
+#Menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#Menu li {
+  border-top: 1px solid #FFF;
+  border-bottom: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+#Menu a {
+  /* Fixes gap between list elements in IE */
+  vertical-align: bottom;
+  _height: 1%;
+  display: block;
+  margin: 0;
+  color: #FFF;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+#Menu a.l1 {
+  background: #009900 url(../../../../headsandbodies/resources/graphics/navigation-arrow.png) 5px 50% no-repeat;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 4px 4px 4px 24px;  
+}
+
+#Menu a.l1:hover, #Menu a.l1.current {
+  background-color: #003300;  
+}
+ 
+#Menu a.l2 {
+  text-transform: none;
+  padding: 4px 4px 4px 19px;
+  color: #003300;
+  font-weight: normal;
+  font-size: 0.9em;
+  background: #96DA83 url(../../../../headsandbodies/resources/graphics/navigation-greenarrow.png) 9px 50% no-repeat;
+}
+
+#Menu a.l2.current, 
+#Menu a.l2:hover {
+  background: #336633 url(../graphics/navigation-whitearrow.png) 9px 50% no-repeat;  
+  color: #FFF;
+}
+
+#Menu li li li {
+    border-top: 1px dotted #003300;
+}
+
+#Menu li.l3:first-child {
+  border-top: 1px transparent ;
+}
+
+#Menu a.l3 {
+  padding: 4px 4px 4px 24px;
+  background: #D3FBCA url(../../../../headsandbodies/resources/graphics/navigation-hyphen.png) 17px 50% no-repeat;
+  color: #003300;
+ }
+
+#Menu a.l3:hover {
+  background: #D3FBCA url(../../../../headsandbodies/resources/graphics/navigation-orange-hyphen.png) 17px 50% no-repeat;
+  color: #FF6600;
+}
+
+#Menu a.l4 {
+  padding: 4px 4px 4px 24px;
+  background: #FFFFFF url(../../../../headsandbodies/resources/graphics/navigation-hyphen.png) 17px 50% no-repeat;
+  color: #003300;
+}
+
+#Menu a.l4:hover {
+  background:  #FFFFFF  url(../../../../headsandbodies/resources/graphics/navigation-orange-hyphen.png) 17px 50% no-repeat;
+  color: #FF6600;
+}
+
+#Menu li.l5 {
+  border:  none;
+}
+
+#Menu a.l5 {
+  padding: 4px 4px 4px 24px;
+  background-image: none;
+  background-color: #fff;
+  color: #B4B4B4;
+}
+
+#Menu a.l5:hover {
+  background-image: none;
+  color: #FF6600;
+}
+  
+#Menu li.l6 {
+  border:  none;
+}
+
+#Menu a.l6 {
+  padding: 4px 4px 4px 39px;
+  background: #FFFFFF url(../../../../headsandbodies/resources/graphics/navigation-hyphen.png) 32px 50% no-repeat;
+  background-color: #fff;
+  color: #B4B4B4;
+}
+
+#Menu a.l6:hover {
+  background:  #FFFFFF  url(../../../../headsandbodies/resources/graphics/navigation-orange-hyphen.png) 32px 50% no-repeat;
+  color: #FF6600;
+}
+  
+/*</group>*/
+
+/*<group=Breadcrumb>*/
+
+#Breadcrumb {
+  float: left;
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 5px;
+}
+
+#Breadcrumb p {
+  padding: 0 !important;
+  margin: 0 5px 0 0;
+  float: left;
+  color: #053700;
+}
+
+#Breadcrumb ul {
+  padding: 0;
+  list-style: none;
+  float: left;
+}
+
+#Breadcrumb ul li {
+  display: inline;
+  float: left;
+}
+
+#Breadcrumb ul li a {
+  color: #053700;
+}
+  
+/*</group>*/
+
+
+/*<group=Slideshow>*/
+
+.Slideshow.Index {
+  width: 100%;
+}
+
+.Slideshow.Index div {
+  background-color:  #EDEDED;  
+  float: left;
+  list-style: none;  
+  width: 100%;
+}
+
+.Slideshow.Index div div {
+  float: left; 
+  margin-right: 2px;
+  width: 105px;
+}
+
+.Slideshow.Index ol li a {
+  display: block;  
+}
+
+.Slideshow .Paginator {
+  text-align: center;
+  padding: 10px;
+  clear: both;
+  border-top: 1px dotted #666666;
+}
+
+.Slideshow .Paginator a, .Slideshow .Paginator span {
+  text-decoration: none;
+  width: 135px;
+}
+
+.Slideshow .Paginator p {
+  clear: both;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.Slideshow .Paginator p strong, 
+.Slideshow .Paginator p a {
+  width: 1em;
+  margin-bottom: -2px;
+}
+
+.Slideshow .Paginator a.prev, .Slideshow .Paginator a.next, .Slideshow .Paginator a.index {
+  font-weight: bold;
+}
+
+.Slideshow .Paginator .prev {
+  float: left;
+  text-align: left;
+  width: 10em;
+}
+
+.Slideshow .Paginator .index {
+  text-align: center;
+}
+
+.Slideshow .Paginator .next {
+  float: right;
+  text-align: right;
+  width: 10em;
+  margin-right: 0;
+}
+
+
+/*</group>*/
+
+/*<group=Quick Search>*/
+
+#QuickSearch {
+  padding-bottom: 13px;
+  background-color: #FFF;
+  width: 150px;
+}
+
+#QuickSearch a.act {
+  margin: 0;
+  background: url(../../../../headsandbodies/resources/graphics/navigation-greenarrow.png) 0% 50% no-repeat !important;
+  padding-left: 7px;
+  float: none;
+  _height: 1%;
+}
+
+#QuickSearch fieldset {
+  border: none;
+}
+
+#QuickSearch input {
+  padding: 2px 0;
+  border: 1px solid #333333;
+  width: 95px;
+  font-size: 1em;
+}
+
+#QuickSearch label, #QuickSearch legend {
+  display: none;
+}
+
+/*</group>*/
+
+/*<group=Advanced search>*/
+
+.AdvancedSearch {
+  margin: 10px 0 10px -5px;
+  _margin-left: -10px;
+  float: left;
+}
+
+.AdvancedSearch div {
+  padding: 5px;
+  background-color: #EDEDED;
+  float: left;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  width: 202px;
+}
+
+.AdvancedSearch div input {
+  width: 190px;
+}
+
+.AdvancedSearch div.full-width {
+  padding: 5px;
+  background-color: #EDEDED;  
+  float: left;
+  margin-bottom: 5px;
+  width: 420px;
+}
+
+.AdvancedSearch div.search-button {
+  text-align: right;
+  width: 420px;
+}
+
+.AdvancedSearch div.full-width select {
+  float: right;
+}
+
+.AdvancedSearch div.full-width p {
+  float: left;
+}
+
+.AdvancedSearch label {
+  display: block;  
+}
+
+/*</group>*/
+
+/*<group=Search results>*/
+  
+.SearchResults {
+  width: 580px;
+  _width: 570px;
+}
+
+.SearchResults .imageThumbnail {
+  float: right;
+}
+
+.SearchResults fieldset,
+.SearchResults fieldset div,
+.SearchResults .pagination {
+  border: none;  
+  text-align: center;
+  clear: both;
+  padding: 5px 0;
+}
+
+.Searchresults fieldset a.act {
+  height: 1%;
+}
+
+.SearchResults .pagination {
+  padding: 10px 0;
+}
+
+.SearchResults label {
+  display: inline; 
+}
+
+.SearchResult {
+  background-color: #EDEDED;
+  border-top: 1px dotted #666666;
+  border-bottom: 1px dotted #666666;
+  margin-bottom: 10px;
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+
+
+.SearchResult .summary {
+  width: 360px;
+  float: left;
+  padding: 3px 0;
+}
+
+.SearchResult .summary p {
+  font-weight: normal;
+}
+
+.SearchResult .summary h3 {
+  text-decoration: none;
+  font-size: 1.2em !important;
+}
+
+.SearchResult .summary a {
+  text-decoration: none;
+}
+
+.SearchResult .PublishDate {
+  white-space: nowrap;
+  float: right;
+  padding: 3px 0;
+  text-align: right;
+  margin-right: 3px;
+  width: 150px;
+}
+
+.SearchResults .advanced {
+  float: right;
+}
+
+.SearchResult .icon {
+  width: 30px !important;
+  height: 30px;
+  float: left;
+}
+
+.SearchResult .icon.video {
+  background: url(../graphics/icon-video.gif) 5px 5px no-repeat;
+}
+
+.SearchResult .icon.audio {
+  background: url(../graphics/icon-audio.gif) 5px 5px no-repeat;
+}
+
+.SearchResult .icon.image {
+  background: url(../graphics/icon-image.gif) 5px 5px no-repeat;
+}
+
+.SearchResult .icon.report {
+  background: url(../graphics/icon-pdf.gif) 5px 5px no-repeat;
+}
+
+.SearchResult .icon.campaign,
+.SearchResult .icon.press,
+.SearchResult .icon.news {
+  background: url(../graphics/icon-document.gif) 5px 5px no-repeat;
+}
+
+/*</group>*/
+
+/*<group=Site Switcher>*/
+
+#SiteSwitcherIncludelet a.act {
+  margin-left: 0;
+}
+
+#site_switcher_country {
+  width: 120px;
+  margin: 10px;
+}
+
+.FramedInput {
+  background: #1C6B2C url(../../../../headsandbodies/resources/graphics/navigation-arrow.png) 5px 50% no-repeat;
+  padding: 4px 4px 4px 25px;
+  width: 105px;  
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.FramedInput input {
+  width: 105px;
+  border-top: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  border-left: none;
+  border-right: none;
+  background-color: #FFF;
+}
+
+#GetInvolvedEmail {
+  width: 105px;
+  height: 18px;
+}
+
+#GetInvolvedIncludelet a.act {
+  margin-left:  10px;
+}
+
+/*</group>*/
+
+
+/*<group=Site Map>*/
+
+div.SiteMap {
+  width: 740px;
+  _width: 730px;
+  float: left;
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+table.SiteMap {
+  width: 100%;
+  background-color: #D3FBCA;
+  float: left;
+  font-size: 1em;
+}
+
+.SiteMap th {
+  background-color: #0E9A00;
+  padding: 5px 0;
+  margin: 0;
+  border-top: 2px solid #FFF;
+  text-align: left;
+}
+
+.SiteMap th a {
+  color: #FFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #0E9A00 url(../../../../headsandbodies/resources/graphics/navigation-arrow.png) 5px 50% no-repeat;
+  padding: 0 13px 0 20px;  
+}
+
+.SiteMap td {
+  background-color: #D3FBCA;
+  width: 20%;
+  border-right: 5px solid #FFF;
+  border-top: 2px solid #FFF;
+}
+
+.SiteMap td.last {
+  border-right: none;
+}
+
+.SiteMap td a {
+  display: block;
+  color: #1C6B2C;
+  text-decoration: none;
+  padding: 5px 0 5px 15px;
+  background: #96DA83 url(../../../../headsandbodies/resources/graphics/navigation-greenarrow.png) 9px 50% no-repeat;
+}
+
+.SiteMap ul {
+  list-style: none;
+  margin-left: 3px;
+  padding: 0;
+}
+
+.SiteMap td ul li {
+  margin: 0;
+  padding: 0;
+  height: 1%;
+}
+
+.SiteMap td ul li a {
+  display: block;
+  padding: 8px 0 3px 15px;
+  background: url(../../../../headsandbodies/resources/graphics/navigation-hyphen.png) 3px 50% no-repeat;
+  color: #1C6B2C;
+  text-decoration: none;
+}
+  
+/*</group>*/
+
+
+/*<group=Planet1>*/
+.bodyhighlight {
+  color: #1C6B2C;
+  font-size: 1em;
+}
+
+.bodyhighlight A{
+  color: #1C6B2C;
+  font-size: 1em;
+  text-decoration: underline;
+}
+
+.bodyhighlightbold {
+  color: #1C6B2C;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.bodyhighlightbold A{
+  color: #1C6B2C;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.bodytiny {
+  color: #1C6B2C;
+  font-size: .85em;
+  font-weight: lighter;
+}
+
+.bodytiny {
+  color: #1C6B2C;
+  font-size: .85em;
+  font-weight: lighter;
+  font-decoration: underline;
+}
+
+.greenbackgroundtext {
+  background: #D3FBCA;
+  color: #003300;
+}
+
+.greenbackgroundtext A{
+  background: #D3FBCA;
+  color: #003300;
+  text-decoration: underline;
+}
+
+.greenbackgroundheadline{
+  background: #D3FBCA;
+  color: #003300;
+  font-size: 1.4em;
+}
+.greenbackgroundheadline A {
+  background: #D3FBCA;
+  color: #003300;
+  font-size: 1.4em;
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bold A {
+  font-weight: bold;
+  text-decoration: underline;
+  color :#000000;
+}
+
+.bodybold {
+  font-weight: bold;
+}
+
+/*</group>*/
+
+
+/*<group=Send>*/
+  
+.Send dt {
+  font-weight: bold;
+  float: left;
+  text-align: right;
+  width: 110px;
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+.Send dd {
+  margin-bottom: 2px;
+}
+
+.Send input, .Send textarea {
+  width: 280px;
+}
+
+.Send .submit {
+  float: right;
+  margin-right: 30px;
+  width: 6em;
+}
+
+/*</group>*/
+
+
+/*<group=Popup>*/
+  
+.Popup {
+  background: #EDEDED;  
+  padding: 10px 20px;
+}
+
+.Popup .Image {  
+  text-align: left;
+}
+
+.Popup .PublishDate, .Popup .Location {  
+  color: #003300;  
+}
+
+.Popup .Location {  
+  float: right;
+  margin-bottom: 10px;
+}
+
+.Popup p {  
+  clear: both;
+}
+
+.Popup p.Copyright, p.CopyrightPolicy, p.internalId {
+  text-align: center;
+  margin: -7px;
+  color:  #999999;
+}
+
+.Popup p.Copyright a, p.CopyrightPolicy a, p.internalId a {
+  color:  #666666;
+}
+
+/*</group>*/
+ 
+/*<group=SendPage>*/
+
+.SendPage .Send {
+  margin-bottom: 10px;
+}
+
+.SendPage .PageActions {
+  display: none;
+}
+
+/*</group>*/
