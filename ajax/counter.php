@@ -1,5 +1,20 @@
 <?php 
 
+/*
+ * USE: insert this in the script of the work you want to know how many people visited it.
+ * 
+ 
+ $.ajax({
+      type: "POST",
+      url: "/ajax/counter.php"
+      //data: data,
+      //success: success,
+      //dataType: dataType
+    });
+     
+  
+ * 
+ */
 
 $servername = "localhost";
 $username = "eldile5_edd_user";
