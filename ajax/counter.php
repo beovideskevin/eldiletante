@@ -18,7 +18,7 @@
 
 $servername = "localhost";
 $username = "eldile5_edd_user";
-$password = "3n0ur4NC3";
+$password = "3n0ur4NC3!";
 $dbname = "eldile5_edd_db";
 $ip = getUserIP();
 
