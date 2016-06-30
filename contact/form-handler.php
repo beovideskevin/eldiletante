@@ -1,9 +1,6 @@
 <?php
-include('SMTPClass.php');
-
-$use_smtp = '0';
-$emailto = 'info@eldiletante.com';
-
+    $emailto = 'info@eldiletante.com';
+    
 	// retrieve from parameters
 	$emailfrom = isset($_POST["email"]) ? $_POST["email"] : "";
 	$nocomment = isset($_POST["nocomment"]) ? $_POST["nocomment"] : "";
@@ -52,58 +49,42 @@ $emailto = 'info@eldiletante.com';
 		
 	echo $response;
 
-// Run server-side validation
-function sendEmail($subject, $content, $emailto, $emailfrom) {
-	
-	$from = $emailfrom;
-	$response_sent = 'Gracias. Su mensaje fue enviado. Le responderé tan pronto como me sea posible.';
-	$response_error = 'Error. Please try again.';
-	$subject =  filter($subject);
-	$url = "Origin Page: ".$_SERVER['HTTP_REFERER'];
-	$ip = "IP Address: ".$_SERVER["REMOTE_ADDR"];
-	$message = $content."\n$ip\r\n$url";
-	
-	// Validate return email & inform admin
-	$emailto = filter($emailto);
+    // Run server-side validation
+    function sendEmail($subject, $content, $emailto, $emailfrom) {
+    	$from = $emailfrom;
+    	$response_sent = 'Gracias. Su mensaje fue enviado. Le responderé tan pronto como me sea posible.';
+    	$response_error = 'Error. Please try again.';
+    	$subject =  filter($subject);
+    	$url = "Origin Page: ".$_SERVER['HTTP_REFERER'];
+    	$ip = "IP Address: ".$_SERVER["REMOTE_ADDR"];
+    	$message = $content."\n$ip\r\n$url";
+    	
+    	// Validate return email & inform admin
+    	$emailto = filter($emailto);
+    
+    	// Setup final message
+    	$body = wordwrap($message);
+    	
+    	// Create header
+    	$headers = "From: $from\n";
+    	$headers .= "MIME-Version: 1.0\n";
+    	$headers .= "Content-type: text/plain; charset=utf-8\n";
+    	// $headers .= "Content-Transfer-Encoding: quoted-printable\r\n";
+    	
+    	// Send email
+    	$mail_sent = @mail($emailto, $subject, $body, $headers);
+    	$response = $mail_sent ? $response_sent : $response_error;
+    		
+    	return $response;
+    }
+    
+    // Remove any un-safe values to prevent email injection
+    function filter($value) {
+    	$pattern = array("/\n/", "/\r/", "/content-type:/i", "/to:/i", "/from:/i", "/cc:/i");
+    	$value = preg_replace($pattern, "", $value);
+    	return $value;
+    }
 
-	// Setup final message
-	$body = wordwrap($message);
-	
-	if($use_smtp == '1'){
-	
-		$SmtpServer = 'SMTP SERVER';
-		$SmtpPort = 'SMTP PORT';
-		$SmtpUser = 'SMTP USER';
-		$SmtpPass = 'SMTP PASSWORD';
-		
-		$to = $emailto;
-		$SMTPMail = new SMTPClient ($SmtpServer, $SmtpPort, $SmtpUser, $SmtpPass, $from, $to, $subject, $body);
-		$SMTPChat = $SMTPMail->SendMail();
-		$response = $SMTPChat ? $response_sent : $response_error;
-		
-	} else {
-		
-		// Create header
-		$headers = "From: $from\n";
-		$headers .= "MIME-Version: 1.0\n";
-		$headers .= "Content-type: text/plain; charset=utf-8\n";
-		// $headers .= "Content-Transfer-Encoding: quoted-printable\r\n";
-		
-		// Send email
-		$mail_sent = @mail($emailto, $subject, $body, $headers);
-		$response = $mail_sent ? $response_sent : $response_error;
-		
-	}
-	return $response;
-}
-
-// Remove any un-safe values to prevent email injection
-function filter($value) {
-	$pattern = array("/\n/", "/\r/", "/content-type:/i", "/to:/i", "/from:/i", "/cc:/i");
-	$value = preg_replace($pattern, "", $value);
-	return $value;
-}
-
-exit;
+    exit;
 
 ?>
