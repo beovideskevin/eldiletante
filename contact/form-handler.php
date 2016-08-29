@@ -85,6 +85,6 @@
     	return $value;
     }
 
-    exit;
+    // exit;
 
 ?>
