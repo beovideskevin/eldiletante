@@ -10,7 +10,7 @@ $(document).ready(function () {
     $('.fullscreenbanner').revolution(
     {
         delay: 9000,
-        startwidth: 1170,
+        startwidth: 1270,
         startheight: 550,
         hideThumbs: 200,
         fullWidth: "off",
@@ -25,7 +25,7 @@ $(document).ready(function () {
 	/*	SLIDER PRO
 	/*-----------------------------------------------------------------------------------*/
 $( '.portfolio-slider' ).sliderPro({
-			width: 1070,
+			width: 1170,
 			height: 600,
 			fade: true,
 			arrows: true,

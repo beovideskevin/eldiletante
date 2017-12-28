@@ -5,7 +5,7 @@
 var verbs={
 	//
 	'ayuda' : helpme,
-	'?' : helpme,
+	'?' : valid,
 	
 	//
 	'coger' : take,
@@ -81,12 +81,12 @@ function interpret (txt) {
 		txt = txt.replace(i, aliases[i]);
 	}
 	var response = '';
-	if (txt != "") {
+	if (txt != "") { 
 		parts = txt.split(/\s+/);
-		while ((part = parts.shift())) {
+		while ((part = parts.shift())) { 
 			if (verbs[part]) response = verbs[part]();
 		}
-		if (!response) response = '<p>Lo siento, no entendí. Para leer las reglas del juego puedes en cualquier momento escribir ayuda o ?.</p> ';	
+		if (!response) response = '<p>Lo siento, no entendí. Para leer las reglas del juego puedes en cualquier momento escribir ayuda. O si quieres saber cuales verbos y objetos son válidos escriba ?.</p> ';	
 	}	
 	var out = document.createElement('div');
 	out.style.width = "99%";
@@ -362,4 +362,8 @@ function talk () {
 
 function helpme() {
 	return "<br><p><u>Ayuda:</u></p><p>...</p>";
+}
+
+function valid() {
+	return "...";
 }

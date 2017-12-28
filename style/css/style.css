@@ -203,6 +203,7 @@ h6 {
 h1 {
     font-size: 28px;
     line-height: 34px;
+    letter-spacing: 2px!important;
 }
 h2 {
     font-size: 22px;
