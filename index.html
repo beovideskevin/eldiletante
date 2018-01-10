@@ -521,6 +521,13 @@
 	var is_focussed = true;
 	
 	$(document).ready(function () {
+		// we have a customer!!! :)
+		$.ajax({
+			type: "POST",
+			url: "/ajax/counter.php"
+		});
+
+
 		var backfilename = "style/images/backgrounds/bg" + Math.floor((Math.random() * 5) + 1) + ".jpg";
 		$.backstretch([backfilename]);	
 	
@@ -576,7 +583,12 @@
 	$( document).blur(function() {
 		is_focussed = false;
 	});
+	
+	*
+	*
 	*/
+   
+  
 	
 </script>
 </body>
