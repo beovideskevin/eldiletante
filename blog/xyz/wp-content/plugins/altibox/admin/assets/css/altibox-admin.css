@@ -1,0 +1,99 @@
+#wrap.altibox h2 {
+	font-size: 30px;
+}
+#wrap.altibox h2 span, #wrap.altibox h2 span * {
+	font-size: 14px;
+	color: #888;
+}
+#wrap.altibox .description {
+	color: #888;
+}
+#wrap.altibox .small {
+	font-size: .8em;
+	font-style: none !important;
+}
+#wrap.altibox .alert {
+	font-size: .9em;
+	color: #238ECB;
+}
+#wrap.altibox .error {
+	color: #E23C0C;
+}
+#wrap.altibox .valid {
+	color: #7ad03a;
+}
+#wrap.altibox .valid.note {
+	margin-left: 25px;
+	background: #fff;
+	display: inline-block;
+	padding:10px;
+}
+#wrap.altibox .valid.note span {
+	color: #919191;
+}
+#wrap.altibox label span.dashicons-image-crop:before {
+	font-size: 16px !important;
+	color: #aaa;
+}
+#wrap.altibox th label span.dashicons {
+	color: #238ECB;
+	margin: 0 5px 10px 0;
+}
+#wrap.altibox td label {
+	margin-bottom: 15px !important;
+}
+#wrap.altibox td label p.description {
+	margin-left: 25px;
+}
+#wrap.altibox img.altibox {
+	border: 1px solid #ccc;
+	padding: 5px;
+}
+#wrap.altibox .altibox-footer {
+	border-left: 0 !important;
+	margin-left: 0 !important;
+	overflow: hidden;
+	padding: 15px !important;
+	/*margin-top: 30px;*/
+}
+#wrap.altibox .altibox-footer .logo {
+	float: left;
+	margin-right: 20px;
+}
+#wrap.altibox .altibox-footer .share a {
+	display: inline-block;
+	padding: 5px 10px;
+	color: #238ECB;
+	margin: 0 5px 0 0;
+}
+#wrap.altibox .altibox-footer .share a span {
+	font-size: 45px;
+	display: block;
+	height: 45px;
+	width: 45px;
+}
+
+#wrap.altibox .altibox_row {
+	position: relative;
+
+}
+#wrap.altibox div[class*="altibox_column_"] {
+	float: left;
+}
+#wrap.altibox .altibox_column_8 {
+	width: 66%;
+}
+#wrap.altibox .altibox_column_4 {
+	width: 33%;
+}
+
+/* container left and right */
+#wrap.altibox .altibox-main-container {
+    float: left;
+    width: 66%;
+}
+#wrap.altibox .altibox-sidebar {
+    float: left;
+    width: 31%;
+    margin-left: 2%;
+}

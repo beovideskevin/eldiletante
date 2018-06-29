@@ -1,0 +1,21 @@
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+A:active {
+	TEXT-DECORATION: none
+}
+BODY {
+	FONT-SIZE: 9pt; FONT-FAMILY: Verdana, Geneva, Charcoal, Tahoma
+}
+TD {
+	FONT-SIZE: 9pt; FONT-FAMILY: Verdana, Geneva, Charcoal, Tahoma
+}
+all.titulo {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Geneva, Charcoal, Tahoma
+}
+all.autor {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Geneva, Charcoal, Tahoma
+}

@@ -149,7 +149,7 @@ body {
     background: #1e1e1f;
     color: #e0e0e0;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: /*500*/ 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
@@ -2371,6 +2371,17 @@ ul.layout-switcher li a.active {
 .social a:hover i {
     color: #FFF
 }
+
+/* for the blog social links */
+@media all and (max-width: 768px) {
+	.widget .social {
+		text-align: center;
+	}
+	.widget p {
+		text-align: center;
+	}
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*	20. FORMS
 /*-----------------------------------------------------------------------------------*/
