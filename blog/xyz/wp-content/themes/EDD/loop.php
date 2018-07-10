@@ -32,4 +32,4 @@
 		</div>
 		<!-- /.row -->
 
-<?php endwhile; else: error_log("OOOOHHH!! (i)");  endif; ?>
+<?php endwhile; else: error_log("OOOOHHH!!");  endif; ?>
