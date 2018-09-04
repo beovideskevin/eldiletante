@@ -1,0 +1,40 @@
+{
+	"FILES_BASE_PATH": "",
+
+	"LANGUAGES_PATH": "language/",
+	"DEFAULT_LANGUAGE": "es",
+
+	"LAYOUT_PATH": "layout/",
+	"DEFAULT_LAYOUT": "home",
+
+	"DATABASE":
+	{
+		"SERVER": "localhost",
+		"DATABASE": "eldile5_edd_db",
+		"USER": "root",
+		"PASSWORD": ""
+	},
+
+	"REGISTER":
+	{
+		"EXCEPTIONS": "",
+		"FOLDERS": "helpers/"
+	},
+
+	"ROUTES":
+	{
+		"DEFAULT": "index",
+
+		"404": "index",
+
+		"es": "langEs",
+
+		"en": "langEn",
+
+		"ajax": {
+			"action": "ajax",
+			"counter": "counter"
+		}
+
+	}
+}

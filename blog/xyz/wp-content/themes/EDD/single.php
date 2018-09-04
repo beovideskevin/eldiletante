@@ -23,7 +23,7 @@ get_header();
 			?></span><span class="date"><?php the_time(' j F, Y'); ?></span><span class="comments"><a href="#"><?php echo esc_html(get_comments_number()) ?> <i class="icon-chat-1"></i></a></span></div>
            
 			<?php if (! empty(get_the_title())) : ?> 
-			  <h2 class="post-title"><?php the_title(); ?></h2>
+			  <h1 class="post-title"><?php the_title(); ?></h1>
             <?php endif; ?>
 			  
 			<?php the_content(); ?>
@@ -33,21 +33,23 @@ get_header();
         </div>
         <!-- /.blog-posts -->
 		
-        <div class="divide20"></div>
+        <!-- <div class="divide20"></div>
         
         <div id="comments" class="box">
           
-			<?php comments_template(); ?>
+			<?php 
+				// comments_template(); 
+			?>
 		  
-        </div>
+        </div> -->
         <!-- /#comments -->
         
-        <div class="divide20"></div>
+        <!-- <div class="divide20"></div>
         
 		<div class="comment-form-wrapper box">
 		
 			<?php 
-			
+				/*
 				$commenter = wp_get_current_commenter();
 				$req = get_option( 'require_name_email' );
 				$aria_req = ( $req ? " aria-required='true'" : '' );
@@ -76,9 +78,10 @@ get_header();
 				);
 					
 				comment_form($formArgs); 
+				*/
 			?>
 			
-		</div>
+		</div> -->
         <!-- /.comment-form-wrapper --> 
 		
  <?php get_footer(); ?>

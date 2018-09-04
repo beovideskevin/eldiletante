@@ -617,7 +617,6 @@ d[0].offsetTop||15===d[0].offsetTop;d.remove();a.fixedPosition=e}f.extend(b.defa
 					$('.btn-submit',this).before($error.clone().text(textError));
 				} else {
 					if(defaults.ajaxSubmit == true){
-						
 						$(this).addClass('submit').after($loading.clone());
 						$('.defaultText',$form).dcDefaultText({action: 'remove'});
 						$.post(formAction, $(this).serialize(),function(data){
@@ -626,6 +625,15 @@ d[0].offsetTop||15===d[0].offsetTop;d.remove();a.fixedPosition=e}f.extend(b.defa
 							var x = horig + defaults.successH;
 							$('.boxes.masoned').animate({height: x+'px'},400);
 							$('fieldset',this).slideUp();
+							
+							// empty the contact form
+							$("#name").val('');
+							$("#email").val('');
+							$("#subject").val('');
+							$("#message").val('');
+							
+							// reload the captcha of the contact form
+							grecaptcha.reset();
 						});
 					} else {
 						$form.submit();

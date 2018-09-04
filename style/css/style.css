@@ -149,6 +149,7 @@ body {
     background: #1e1e1f;
     color: #e0e0e0;
     font-size: 15px;
+	letter-spacing: 1px;
     font-weight: /*500*/ 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -660,7 +661,7 @@ video {
 /*	03. NAVBAR
 /*-----------------------------------------------------------------------------------*/
 .navbar {
-    z-index: 10000;
+    z-index: 50; /* 10000; */
     background: rgba(30,30,31,0.85);
     border: 0;
     border-radius: 0;
@@ -755,7 +756,7 @@ section {
 }
 .box {
     padding: 40px;
-    background: rgba(30,30,31,0.85);
+    background: rgba(30,30,31,0.95);
 }
 section .box {
     padding: 50px
@@ -1324,7 +1325,7 @@ figure a .text-overlay .info span {
     padding: 0;
 }
 .revolution {
-    z-index: 998
+    z-index: 49; /* 998 */
 }
 .revolution ul {
     visibility: hidden;
@@ -3299,4 +3300,20 @@ textarea {
 	.classic-view figure.main {
 	    margin: -25px -25px 25px -25px
 	}
+}
+
+/***/
+.alignright {
+	float: right;
+	padding: 10px;
+}
+
+.alignleft {
+	float: left;
+	padding: 10px;
+}
+
+.aboutus_css_icon {
+	font-size: 30px; 
+	color: #9cbc68
 }

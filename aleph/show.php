@@ -34,7 +34,7 @@ if (! empty($_GET['id'])) {
 		}
 		
 		// finish the page
-		echo '</TD></TR></TBODY></TABLE></CENTER></BODY></HTML>';
+		echo '<DIV class=Section1><p><br></p><p><br></p><p><br></p></DIV></TD></TR></TBODY></TABLE></CENTER></BODY></HTML>';
 	}
 	
 }

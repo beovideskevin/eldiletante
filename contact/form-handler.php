@@ -1,5 +1,8 @@
 <?php
-    $emailto = 'info@eldiletante.com';
+
+	session_start();
+
+    $emailto = 'contact@eldiletante.com';
     
 	// retrieve from parameters
 	$emailfrom = isset($_POST["email"]) ? $_POST["email"] : "";
@@ -7,7 +10,7 @@
 	$subject = 'Email from edd';
 	$message = '';
 	$response = '';
-	$response_fail = 'Error. Verifique todos los campos del formulario y vuelva a intentarlo, por favor.';
+	$response_fail = (empty($_SESSION['LANGUAGE_IN_USE']) || $_SESSION['LANGUAGE_IN_USE'] == 'es') ? 'Error. Verifique todos los campos del formulario y vuelva a intentarlo, por favor.' : 'Error. Please verify the form fields and try again.';
 	
 	if (isset($_POST['g-recaptcha-response'])) {
 		$output = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LeZ0AYTAAAAAEEf5jI7YkobkyE60xxfv9tT4nNm&response=".$_POST['g-recaptcha-response']), true);
@@ -33,18 +36,21 @@
 					}
 				}
 				
-				$response = sendEmail($subject, $message, $emailto, $emailfrom);	
+				$response = sendEmail($subject, $message, $emailto, $emailfrom);
 			} 
 			else {
 				$response = $response_fail; // . " comment is not empty";
+				error_log("email error: comment is not empty");
 			}
 		}
 		else {
 			$response = $response_fail; // . " captcha didn't authorize";
+			error_log("email error: captcha didn't authorize");
 		}
 	}
 	else {
 		$response = $response_fail; // . " captcha didn't work";
+		error_log("email error: captcha didn't work");
 	}
 		
 	echo $response;
@@ -52,7 +58,7 @@
     // Run server-side validation
     function sendEmail($subject, $content, $emailto, $emailfrom) {
     	$from = $emailfrom;
-    	$response_sent = 'Gracias. Su mensaje fue enviado. Le responderé tan pronto como me sea posible.';
+    	$response_sent = (empty($_SESSION['LANGUAGE_IN_USE']) || $_SESSION['LANGUAGE_IN_USE'] == 'es') ? 'Gracias. Su mensaje fue enviado. Le responderé tan pronto como me sea posible.' : 'Thank you. Your message was sent and I\'ll reply ASAP.';
     	$response_error = 'Error. Please try again.';
     	$subject =  filter($subject);
     	$url = "Origin Page: ".$_SERVER['HTTP_REFERER'];

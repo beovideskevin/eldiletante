@@ -29,12 +29,12 @@
         <!-- /.widget -->
 		<?php endif; ?>
 		
-		<?php if ( ! empty($cats = get_categories(array('orderby' => 'name', 'order'   => 'ASC')))) : ?>
+		<?php if ( ! empty($cats = get_categories(array('orderby' => 'name', 'order' => 'ASC')))) : ?>
         <div class="sidebox box widget">
           <h3 class="widget-title section-title">Categorias</h3>
           <ul class="circled">
 			<?php foreach ($cats as $cat) : ?>
-				<li><a href="<?php echo esc_url(get_category_link( $cat->term_id )); ?>"><?php echo $cat->name; ?></a></li>
+				<li><a href="<?php echo esc_url(get_category_link( $cat->term_id )); ?>"><?php echo $cat->name; ?> (<?= $cat->count ?>)</a></li>
 			<?php endforeach; ?>
           </ul>
         </div>
@@ -47,9 +47,9 @@
           <h3 class="widget-title section-title">Tags</h3>
           <ul class="tag-list">
 			  
-		<?php foreach ($tags as $tag) : ?>
-			<li><a href="<?php echo esc_url(get_tag_link( $tag->term_id )); ?>" class="btn"><?php echo $tag->name; ?></a></li>
-		<?php endforeach; ?>
+		<?php for ($i = 0; $i < 12 && $i < count($tags); $i++) : ?>
+			<li><a href="<?php echo esc_url(get_tag_link( $tags[$i]->term_id )); ?>" class="btn"><?php echo $tags[$i]->name; ?></a></li>
+		<?php endfor; ?>
 			  
 		  </ul>	  
 		  <!-- /.tag-list -->  
@@ -66,12 +66,12 @@
 		
 		<div class="sidebox box widget">
           <!--<h3 class="widget-title section-title">Elsewhere</h3> -->
-          <p>El Diletante Digital en las redes sociales...</p>
+          <p>El Diletante Digital en las redes	...</p>
           <ul class="social">
-            <li><a href="https://www.facebook.com/diletantedigital" target="_blank"><i class="icon-s-facebook"></i></a></li>
+            <li><a href="https://www.facebook.com/eldiletantedigital" target="_blank"><i class="icon-s-facebook"></i></a></li>
 			<li><a href="https://www.twitter.com/diletantedig" target="_blank"><i class="icon-s-twitter"></i></a></li>
-			<li><a href="https://instagram.com/eldiletantedigital/" target="_blank"><i class="icon-s-instagram"></i></a></li>
-			<li><a href="https://www.vimeo.com/user34254647" target="_blank"><i class="icon-s-vimeo"></i></a></li>
+			<li><a href="https://www.instagram.com/eldiletantedigital/" target="_blank"><i class="icon-s-instagram"></i></a></li>
+			<li><a href="https://www.vimeo.com/eldiletante" target="_blank"><i class="icon-s-vimeo"></i></a></li>
           </ul>
           <div class="clearfix"></div>
         </div>

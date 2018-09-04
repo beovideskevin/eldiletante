@@ -11,10 +11,10 @@
 		<!-- <div class="box" style="margin: 20px 0px 50px 0px">
 			<p class="pull-left" style="margin: 0px">El Diletante Digital en las redes sociales...</p>
 			<ul class="social pull-right">
-			  <li><a href="https://www.facebook.com/diletantedigital" target="_blank"><i class="icon-s-facebook"></i></a></li>
+			  <li><a href="https://www.facebook.com/eldiletantedigital" target="_blank"><i class="icon-s-facebook"></i></a></li>
 			  <li><a href="https://www.twitter.com/diletantedig" target="_blank"><i class="icon-s-twitter"></i></a></li>
-			  <li><a href="https://instagram.com/eldiletantedigital/" target="_blank"><i class="icon-s-instagram"></i></a></li>
-			  <li><a href="https://www.vimeo.com/user34254647" target="_blank"><i class="icon-s-vimeo"></i></a></li>
+			  <li><a href="https://www.instagram.com/eldiletantedigital/" target="_blank"><i class="icon-s-instagram"></i></a></li>
+			  <li><a href="https://www.vimeo.com/eldiletante" target="_blank"><i class="icon-s-vimeo"></i></a></li>
 			</ul>
 			<div class="clearfix"></div>
         </div> -->
@@ -42,13 +42,6 @@
 	var is_focussed = true;
 	
 	$(document).ready(function () {
-		// we have a customer!!! :)
-		$.ajax({
-			type: "POST",
-			url: "/ajax/counter.php"
-		});
-
-
 		var backfilename = "/style/images/backgrounds/bg" + Math.floor((Math.random() * 5) + 1) + ".jpg";
 		$.backstretch([backfilename]);	
 	
@@ -76,8 +69,7 @@
 					Math.floor((Math.random() * 10)), 
 					Math.random().toFixed(2));
 			}, 
-			20000);			
-
+			20000);	
 	});
 	
 	if (/*@cc_on!@*/false) { // check for Internet Explorer

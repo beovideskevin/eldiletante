@@ -4,8 +4,8 @@
 
 DEFINE('SERVER_CONFIG', 'localhost');
 DEFINE('SERVER_DATABASE_CONFIG', 'eldile5_edd_db');
-DEFINE('SERVER_DATABASE_USER_CONFIG', 'root'); // eldile5_eddu
-DEFINE('SERVER_DATABASE_PASSWORD_CONFIG', ''); // )I2W-N.0vO_&
+DEFINE('SERVER_DATABASE_USER_CONFIG', 'root'); // 
+DEFINE('SERVER_DATABASE_PASSWORD_CONFIG', ''); // 
 
 $_ = function ($query = "", $options = "", $extras = "") {
 	static $query_obj = null;
