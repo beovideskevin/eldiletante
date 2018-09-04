@@ -16,6 +16,12 @@ function index ($args = [])
 {
 	global $_;
 
+	if (! empty($args['lang']) && in_array($args['lang'], ['es', 'en'])) {
+		$_SESSION['LANGUAGE_IN_USE'] = $args['lang'];
+
+		$_("language: {$_SESSION['LANGUAGE_IN_USE']}");
+	}
+	
 	$results = [];
 
 	$_("render", $results);
@@ -23,24 +29,16 @@ function index ($args = [])
 
 function langEs ($args = [])
 {
-	global $_;
+	$args['lang'] = 'es';
 
-	$_SESSION['LANGUAGE_IN_USE'] = 'es';
-
-	$_("language: {$_SESSION['LANGUAGE_IN_USE']}");
-
-	index();
+	index($args);
 }
 
 function langEn ($args = [])
 {
-	global $_;
+	$args['lang'] = 'en';
 
-	$_SESSION['LANGUAGE_IN_USE'] = 'en';
-
-	$_("language: {$_SESSION['LANGUAGE_IN_USE']}");
-
-	index();
+	index($args);
 }
 
 function ajax ($args = [])
