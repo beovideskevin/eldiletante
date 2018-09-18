@@ -6,7 +6,7 @@
 // JUST FOR THE LOCALHOST
 // date_default_timezone_set('America/Los_Angeles');
 
-session_start();
+session_start(); 
 
 require_once('$_.php');
 
@@ -21,7 +21,7 @@ function index ($args = [])
 
 		$_("language: {$_SESSION['LANGUAGE_IN_USE']}");
 	}
-	
+
 	$results = [];
 
 	$_("render", $results);
