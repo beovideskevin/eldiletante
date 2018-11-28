@@ -1,0 +1,69 @@
+<div class="swiper-wrapper"> <a class="arrow-left" href="#"></a> <a class="arrow-right" href="#"></a>
+  <div class="swiper-container gallery">
+    <div class="swiper">
+      <div class="item">
+        <figure class="frame"><img src="works/artware/euclides/images/img01.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/euclides/images/img02.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/euclides/images/img03.jpg" alt="" /></figure>
+      </div>
+	  <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="works/artware/euclides/images/img04.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="player">
+            <iframe src="https://player.vimeo.com/video/297967581" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+        </figure>
+      </div>
+      <!-- /.item -->
+    </div>
+    <!-- /.swiper -->
+  </div>
+  <!-- /.swiper-container -->
+</div>
+<!-- /.swiper-wrapper -->
+
+<div class="container inner">
+  <div class="box">
+	  
+    <h1 class="post-title">La Carcel Euclidiana de la Razon</h1>
+    <p>Este díptico consiste del volcado hexadecimal de una imagen y de un video. La imagen se imprime tal cual la entendería un ordenador. El video se muestra en tiempo real como una animación. La obra intenta señalar cierta intuición acerca de la tecnología, desocultar la racionalidad detrás de su sentido utilitario. </p>
+    <div class="divide10"></div>
+    <!-- <a href="#" class="btn">More Info</a> -->
+    
+  </div>
+  <!-- /.box -->
+</div>
+<!-- /.container -->
+
+<!-- INSERT PAGE SCRIPTS HERE -->
+<script type="text/javascript">
+	$('.swiper-container.gallery').each(function(){
+		  $(this).swiper({
+		     grabCursor: true,
+		    slidesPerView: 'auto',
+		    wrapperClass: 'swiper',
+		    slideClass: 'item',
+		    offsetPxBefore: 0,
+		     offsetPxAfter: 0
+		  });
+		
+		  var $swipers = $(this);
+		
+		  $swipers.siblings('.arrow-left').click(function(){
+		$swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex-1);
+		return false;
+		});
+		$swipers.siblings('.arrow-right').click(function(){
+		$swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex+1);
+		return false;
+		});
+	});
+</script>

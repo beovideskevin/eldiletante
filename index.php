@@ -41,6 +41,14 @@ function langEn ($args = [])
 	index($args);
 }
 
+function gallery ($args = []) {
+	header("location: https://www.deviantart.com/eldiletantedigital/");
+}
+
+function show () {
+	header("location: https://www.deviantart.com/eldiletantedigital/");
+}
+
 function ajax ($args = [])
 {
 	die("ajax");

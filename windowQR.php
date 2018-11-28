@@ -1,5 +1,5 @@
 <?php
 
-$url = "index.html";
+$url = "index.php";
 
 header("Location: {$url}");

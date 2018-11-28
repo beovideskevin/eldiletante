@@ -281,10 +281,9 @@ jQuery(document).ready(function() {
         singlePageCallback: function(url, element) {
             // to update singlePage content use the following method: this.updateSinglePage(yourContent)
             
-            
 			$('a[data-rel]').each(function () {
-    $(this).attr('rel', $(this).data('rel'));
-});
+				$(this).attr('rel', $(this).data('rel'));
+			});
 
             var t = this;
 
@@ -300,8 +299,8 @@ jQuery(document).ready(function() {
                 .fail(function() {
                     t.updateSinglePage("Error! Please refresh the page!");
                 });
-        }
-    });
+			}
+		});
 
 
     /*********************************

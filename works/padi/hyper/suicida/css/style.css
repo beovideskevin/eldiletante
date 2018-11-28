@@ -1,21 +1,32 @@
-body, td, div#screen, p,pre, input[type=text]{
+body, td, div#screen, p,pre, input[type=text] {
 	background-color:black;
 	color:#8f8;
-	font-family:monospace;
+	font-family: monospace;
 	font-size:18px;
 	margin:0;
 	padding:0;
 	vertical-align:baseline;
 }
 
-#kc{ 
-	display:none;
-}
-
 input[type=text]{
 	border:0;
 	outline:none;
+}
+
+#l1 {
 	width:100%;
+}
+
+#l2 {
+	width:20%;
+}
+
+#die {
+	float: left
+}
+
+#deadWrapper {
+	display: none;
 }
 
 table#il{
@@ -31,4 +42,10 @@ td#ii{
 
 p {
 	margin: 0 0 10 0px;
+}
+
+.help {
+	font-weight: lighter;
+	font-style: italic;
+	text-decoration: underline; 
 }
