@@ -47,7 +47,7 @@
 <div class="body-wrapper">
   <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header"> <a class="btn responsive-menu" data-toggle="collapse" data-target=".navbar-collapse"><i></i></a>
-      <div class="navbar-brand text-center"> <a href="index.html"><img src="/style/images/logo.png" alt="" data-src="/style/images/logo.png" data-ret="/style/images/logo@2x.png" class="retina" /></a> </div>
+      <div class="navbar-brand text-center"> <a href="/"><img src="/style/images/logo.png" alt="" data-src="/style/images/logo.png" data-ret="/style/images/logo@2x.png" class="retina" /></a> </div>
       <!-- /.navbar-brand --> 
     </div>
     <!-- /.navbar-header -->
@@ -57,7 +57,7 @@
         <li><a href="/#portfolio">Portafolio</a></li>
         <li><a href="/#about">Acerca</a></li>
         <li><a href="/#contact">Contacto</a></li>
-        <li class="current"><a href="/blog/index.php">Blog</a></li>
+        <!-- <li class="current"><a href="/blog/index.php">Blog</a></li> -->
       </ul>
       <!-- /.navbar-nav --> 
     </div>
