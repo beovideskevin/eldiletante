@@ -30,6 +30,10 @@
 		"es": "langEs",
 
 		"en": "langEn",
+		
+		"gallery": "gallery",
+		
+		"show": "show",
 
 		"ajax": {
 			"action": "ajax",
