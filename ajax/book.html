@@ -1,0 +1,69 @@
+<div class="swiper-wrapper"> <a class="arrow-left" href="#"></a> <a class="arrow-right" href="#"></a>
+    <div class="swiper-container gallery">
+      <div class="swiper">
+        <div class="item">
+          <figure class="frame"><img src="style/images/book1.jpg" alt="" /></figure>
+        </div>
+       
+        <!-- /.item -->
+
+        <div class="item">
+            <figure class="frame"><img src="style/images/book2.jpg" alt="" /></figure>
+          </div>
+          <!-- /.item -->
+      </div>
+      <!-- /.swiper -->
+    </div>
+    <!-- /.swiper-container -->
+  </div>
+  <!-- /.swiper-wrapper -->
+  
+  <div class="container inner">
+    <div class="box">
+        
+      <h1 class="post-title">PERSPECTIVAS DEL ARTE DIGITAL</h1>
+      <p>El arte siempre ha sido un caballo de batalla para los filósofos. Desde
+        Platón los filósofos se han visto obligados a pensar el arte como fenómeno 
+        global desde sus manifestaciones particulares. No ha sido fácil
+        para éstos articular un discurso que haga justicia al arte sin violentarlo
+        para que encaje en las demandas de sus propios pensamientos o
+        sistemas filosóficos. Contemporáneamente, asistimos a una hiperinflación, 
+        hiperpresencia y muchos otros "hiper-" de las artes que han
+        obligado a los teóricos a pensar las artes no desde la filosofía o cualquier 
+        otra disciplina, sino desde el arte mismo, desde su peculiariar
+        racionalidad. Desde Kant en adelante no hay pensador que no haya
+        dejado espacio en su sistema -tuviese voluntad de este o no- para
+        las artes, con una cierta conciencia de no haber pensado todo si las
+        artes no tenían una articulación adecuada en el propio pensamiento.</p>
+      <div class="divide10"></div>
+      <!-- <a href="#" class="btn">More Info</a> -->
+      
+    </div>
+    <!-- /.box -->
+  </div>
+  <!-- /.container -->
+  
+  <!-- INSERT PAGE SCRIPTS HERE -->
+  <script type="text/javascript">
+      $('.swiper-container.gallery').each(function(){
+            $(this).swiper({
+               grabCursor: true,
+              slidesPerView: 'auto',
+              wrapperClass: 'swiper',
+              slideClass: 'item',
+              offsetPxBefore: 0,
+               offsetPxAfter: 0
+            });
+          
+            var $swipers = $(this);
+          
+            $swipers.siblings('.arrow-left').click(function(){
+          $swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex-1);
+          return false;
+          });
+          $swipers.siblings('.arrow-right').click(function(){
+          $swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex+1);
+          return false;
+          });
+      });
+  </script>
