@@ -33,6 +33,13 @@
   <body>
   
 	<script>
+	
+	  document.addEventListener('click', function (event) {
+		window.print();
+	  }, false);
+	  
+	  
+		
 	  var videoInput;
       var wVideo = 320, hVideo = 240;
 	  var offset = 100, wScreen = window.innerWidth - offset, hScreen = window.innerHeight - offset;
@@ -58,8 +65,12 @@
 
       function draw() {
         clear();
+
+		let grayImg	= videoInput;
 		
-		image(videoInput, 0, 0, width, width * videoInput.height / videoInput.width);
+		image(grayImg, 0, 0, width, width * videoInput.height / videoInput.width);
+		
+		filter(GRAY);
 		
 		strokeWeight(12);
 		
@@ -114,6 +125,8 @@
       }
     </script>
 
+	<div style="text-align: center; z-index: 1000; position:absolute; width: 100%; top:85%"><input type="submit" value="PRINT" style="font-size: 20px; padding: 10px 20px"></div>
+	
   </body>
 
 </html>
