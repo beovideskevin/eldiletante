@@ -29,18 +29,27 @@
         <!-- /.widget -->
 		<?php endif; ?>
 		
-		<?php if ( ! empty($cats = get_categories(array('orderby' => 'name', 'order' => 'ASC')))) : ?>
+		<!-- <?php if ( ! empty($cats = get_categories(array('orderby' => 'name', 'order' => 'ASC')))) : ?>
         <div class="sidebox box widget">
-          <h3 class="widget-title section-title">Categorias</h3>
+          <h3 class="widget-title section-title">Cuentos</h3>
           <ul class="circled">
 			<?php foreach ($cats as $cat) : ?>
 				<li><a href="<?php echo esc_url(get_category_link( $cat->term_id )); ?>"><?php echo $cat->name; ?> (<?= $cat->count ?>)</a></li>
 			<?php endforeach; ?>
           </ul>
         </div>
-        <!-- /.widget -->
-		<?php endif; ?>
-        
+		<?php endif; ?> -->
+
+    <div class="sidebox box widget">
+      <h3 class="widget-title section-title">Cuentos</h3>
+        <ul class="circled">
+				  <li><a href="/blog/2018/08/14/papeles-sucios/">Papeles Sucios</a></li>
+          <li><a href="/blog/tag/megacity-blues/">Megacity Blues</a></li>
+        </ul>
+    </div>
+    <!-- /.widget -->
+    
+
 		<?php if ( ! empty($tags = get_tags())) : ?>
 		
 		<div class="sidebox box widget">

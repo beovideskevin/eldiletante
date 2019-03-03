@@ -23,10 +23,10 @@
 define('DB_NAME', 'eldile5_edd_blog');
 
 /** MySQL database username */
-define('DB_USER', 'root'); // eldile5_edd_user
+define('DB_USER', 'eldile5_eddu'); 
 
 /** MySQL database password */
-define('DB_PASSWORD', ''); // 3n0ur4NC3! 
+define('DB_PASSWORD', ')I2W-N.0vO_&'); // d...
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
