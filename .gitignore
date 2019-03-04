@@ -2,3 +2,5 @@
 config.json
 /blog/xyz/wp-config.php
 /blog/xyz/wp-content/uploads/
+error_log
+.htaccess
