@@ -1,0 +1,132 @@
+<html>
+
+  <head>
+    <meta name="description" content="">
+	<meta name="author" content="Kevin Beovides Casas">
+	
+	<meta property="og:image" content="http://www.eldiletantedigital.com/style/images/art/npc.jpg" />
+	<meta property="og:title" content="El Diletante Digital" />
+	<meta property="og:site_name" content="El Diletante Digital, sitio web de Kevin Beovides Casas"/>
+	<meta property="og:url" content="http://www.eldiletantedigital.com" />
+	<meta property="og:description" content="El Diletante Digital es un sitio web dedicado a la literatura hipertextual, ciberliteratura, literatura digital, poesía electrónica, net.art, hacker art, arte de los nuevos medios, new media art y arte digital." />
+	<meta property="article:author" content="https://www.facebook.com/diletantedigital" />
+	
+    <title>It's OK to be gray</title>
+	<link rel="icon" href="../../../../style/images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../../../../style/images/favicon.ico" type="image/x-icon">
+    
+	<script src="../../../common/p5/p5.js"></script>
+    <script src="../../../common/p5/addons/p5.dom.js"></script>
+    <script src="clmtrackr.js"></script>
+    <script src="model_pca_20_svm.js"></script>
+    
+    <style> 
+		body { 
+			padding: 0; 
+			margin: 0;
+			background-color: #000000; 
+		} 
+	</style>
+
+  </head>
+
+  <body>
+  
+	<script>
+	
+	  document.addEventListener('click', function (event) {
+		window.print();
+	  }, false);
+	  
+	  
+		
+	  var videoInput;
+      var wVideo = 320, hVideo = 240;
+	  var offset = 100, wScreen = window.innerWidth - offset, hScreen = window.innerHeight - offset;
+	  var ctracker, positions;
+	  
+      function setup() {
+		// setup camera capture
+        videoInput = createCapture(VIDEO); 
+        videoInput.size(wVideo, hVideo);
+		videoInput.hide();
+        
+        // setup canvas
+        var cnv = createCanvas(wScreen, hScreen);
+        cnv.position(offset / 2, offset / 2);
+		
+        // setup tracker
+        ctracker = new clm.tracker();
+        ctracker.init(pModel);
+        ctracker.start(videoInput.elt);
+
+        noStroke();
+      }
+
+      function draw() {
+        clear();
+
+		let grayImg	= videoInput;
+		
+		image(grayImg, 0, 0, width, width * videoInput.height / videoInput.width);
+		
+		filter(GRAY);
+		
+		strokeWeight(12);
+		
+		stroke(0);
+		
+		fill(0);
+
+        // get array of face marker positions [x, y] format
+        positions = ctracker.getCurrentPosition();
+        
+        // for (var i=0; i<positions.length; i++) {
+        //   set the color of the ellipse based on position on screen
+        //   fill(map(positions[i][0], width*0.33, width*0.66, 0, 255), map(positions[i][1], height*0.33, height*0.66, 0, 255), 255);
+        //   draw ellipse at each position point
+        //   ellipse(positions[i][0], positions[i][1], 8, 8);
+		// }
+		
+		if (positions.length) {
+			// nariz
+			line(
+				map(positions[33][0], 0, videoInput.width, 0, width), 
+				map(positions[33][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+				map(positions[37][0], 0, videoInput.width, 0, width), 
+				map(positions[37][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
+			);
+				
+			line(
+				map(positions[36][0], 0, videoInput.width, 0, width), 
+				map(positions[36][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+				map(positions[37][0], 0, videoInput.width, 0, width), 
+				map(positions[37][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
+			);
+			
+			// boca
+			line(
+				map(positions[44][0], 0, videoInput.width, 0, width), 
+				map(positions[44][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+				map(positions[50][0], 0, videoInput.width, 0, width), 
+				map(positions[50][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
+			);
+			
+			// ojos
+			ellipse(
+				map(positions[27][0], 0, videoInput.width, 0, width), 
+				map(positions[27][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+				8, 8);
+			ellipse(
+				map(positions[32][0], 0, videoInput.width, 0, width), 
+				map(positions[32][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+				8, 8);
+		}
+      }
+    </script>
+
+	<div style="text-align: center; z-index: 1000; position:absolute; width: 100%; top:85%"><input type="submit" value="PRINT" style="font-size: 20px; padding: 10px 20px"></div>
+	
+  </body>
+
+</html>
