@@ -78,7 +78,6 @@
           <p>El Diletante Digital en las redes	...</p>
           <ul class="social">
             <li><a href="https://www.facebook.com/eldiletantedigital" target="_blank"><i class="icon-s-facebook"></i></a></li>
-			<li><a href="https://www.twitter.com/diletantedig" target="_blank"><i class="icon-s-twitter"></i></a></li>
 			<li><a href="https://www.instagram.com/eldiletantedigital/" target="_blank"><i class="icon-s-instagram"></i></a></li>
 			<li><a href="https://www.vimeo.com/eldiletante" target="_blank"><i class="icon-s-vimeo"></i></a></li>
           </ul>
