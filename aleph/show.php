@@ -17,7 +17,7 @@ if (! empty($_GET['id'])) {
 		// output the header 
 		echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 			<HTML><HEAD><TITLE>' . htmlOut($author) . ' ' . htmlOut($title) . '</TITLE>
-			<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+			<META http-equiv="Content-Type" content="text/html; charset=utf-8">
 			<META content="MSHTML 6.00.2600.0" name=GENERATOR><LINK 
 			href="css/pens_estilo.css" type=text/css rel=STYLESHEET></HEAD>
 			<BODY text=#000000 vLink=#006499 aLink=#ffffff link=#006499 bgColor=#999999>
