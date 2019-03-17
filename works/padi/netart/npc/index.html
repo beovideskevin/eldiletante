@@ -26,6 +26,14 @@
 			margin: 0;
 			background-color: #000000; 
 		} 
+		
+		@media print
+		{    
+			.no-print, .no-print *
+			{
+				display: none !important;
+			}
+		}
 	</style>
 
   </head>
@@ -125,7 +133,7 @@
       }
     </script>
 
-	<div style="text-align: center; z-index: 1000; position:absolute; width: 100%; top:85%"><input type="submit" value="PRINT" style="font-size: 20px; padding: 10px 20px"></div>
+	<div class="no-print" style="text-align: center; z-index: 1000; position:absolute; width: 100%; top:85%"><input type="submit" value="PRINT" style="font-size: 20px; padding: 10px 20px"></div>
 	
   </body>
 
