@@ -46,6 +46,7 @@
       var wVideo = 320, hVideo = 240;
 	  var offset = 50, wScreen = window.innerWidth - offset, hScreen = window.innerHeight - offset;
 	  var ctracker, positions;
+	  var countFrames = 0;
 	  
       function setup() {
 		// setup camera capture
@@ -62,69 +63,75 @@
         ctracker.init(pModel);
         ctracker.start(videoInput.elt);
 
-        noStroke();
+		strokeWeight(12);
+		stroke(0);
+		fill(0);
       }
 
       function draw() {
         clear();
 
-		let grayImg	= videoInput;
-		
-		image(grayImg, 0, 0, width, width * videoInput.height / videoInput.width);
+		image(videoInput, 0, 0, width, width * videoInput.height / videoInput.width);
 		
 		filter(GRAY);
-		
-		strokeWeight(12);
-		
-		stroke(0);
-		
-		fill(0);
 
         // get array of face marker positions [x, y] format
         positions = ctracker.getCurrentPosition();
-        
-        // for (var i=0; i<positions.length; i++) {
-        //   set the color of the ellipse based on position on screen
-        //   fill(map(positions[i][0], width*0.33, width*0.66, 0, 255), map(positions[i][1], height*0.33, height*0.66, 0, 255), 255);
-        //   draw ellipse at each position point
-        //   ellipse(positions[i][0], positions[i][1], 8, 8);
-		// }
-		
-		if (positions.length) {
-			// nariz
-			line(
-				map(positions[33][0], 0, videoInput.width, 0, width), 
-				map(positions[33][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
-				map(positions[37][0], 0, videoInput.width, 0, width), 
-				map(positions[37][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
-			);
-				
-			line(
-				map(positions[36][0], 0, videoInput.width, 0, width), 
-				map(positions[36][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
-				map(positions[37][0], 0, videoInput.width, 0, width), 
-				map(positions[37][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
-			);
-			
-			// boca
-			line(
-				map(positions[44][0], 0, videoInput.width, 0, width), 
-				map(positions[44][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
-				map(positions[50][0], 0, videoInput.width, 0, width), 
-				map(positions[50][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
-			);
-			
-			// ojos
-			ellipse(
-				map(positions[27][0], 0, videoInput.width, 0, width), 
-				map(positions[27][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
-				8, 8);
-			ellipse(
-				map(positions[32][0], 0, videoInput.width, 0, width), 
-				map(positions[32][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
-				8, 8);
+ 
+		if (positions != undefined && videoInput != undefined) {
+			if (positions.length) {
+				// nariz
+				line(
+					map(positions[33][0], 0, videoInput.width, 0, width), 
+					map(positions[33][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+					map(positions[37][0], 0, videoInput.width, 0, width), 
+					map(positions[37][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
+				);
+
+				line(
+					map(positions[36][0], 0, videoInput.width, 0, width), 
+					map(positions[36][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+					map(positions[37][0], 0, videoInput.width, 0, width), 
+					map(positions[37][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
+				);
+
+				// boca
+				line(
+					map(positions[44][0], 0, videoInput.width, 0, width), 
+					map(positions[44][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+					map(positions[50][0], 0, videoInput.width, 0, width), 
+					map(positions[50][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width)
+				);
+
+				// ojos
+				ellipse(
+					map(positions[27][0], 0, videoInput.width, 0, width), 
+					map(positions[27][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+					8, 8);
+				ellipse(
+					map(positions[32][0], 0, videoInput.width, 0, width), 
+					map(positions[32][1], 0, videoInput.height, 0, width * videoInput.height / videoInput.width), 
+					8, 8);
+			}
 		}
+		
+		countFrames++;
+		if (countFrames == 500000) {
+			countFrames = 0;
+			console.log("reset the tracker");
+			
+			ctracker.stop();
+			ctracker.reset();
+			ctracker.start(videoInput.elt);
+			
+			/* ctracker = null;
+			ctracker = new clm.tracker();
+			ctracker.init(pModel);
+			ctracker.start(videoInput.elt); */
+		}
+		
       }
+
     </script>
 
 	<div class="no-print" style="text-align: center; z-index: 1000; position:absolute; width: 100%; top:85%"><input type="submit" onclick="window.print();" value="PRINT" style="font-size: 20px; padding: 10px 20px"></div>
