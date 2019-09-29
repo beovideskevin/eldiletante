@@ -4,14 +4,14 @@
 
 DEFINE('SERVER_CONFIG', 'localhost');
 DEFINE('SERVER_DATABASE_CONFIG', 'eldile5_edd_db');
-DEFINE('SERVER_DATABASE_USER_CONFIG', 'eldile5_eddu'); // 
-DEFINE('SERVER_DATABASE_PASSWORD_CONFIG', ')I2W-N.0vO_&'); // 
+DEFINE('SERVER_DATABASE_USER_CONFIG', 'root');
+DEFINE('SERVER_DATABASE_PASSWORD_CONFIG', '');
 
 $_ = function ($query = "", $options = "", $extras = "") {
 	static $query_obj = null;
 	// create the queryObject
 	if (empty($query_obj)) 
-		$query_obj = new ExternalQuery();
+		$query_obj = new QueryClass();
 	// first get the parts of the query into an array
 	$args = cleanArguments($query);
 	// get the main action, the first word, and unset it 
@@ -30,6 +30,7 @@ $_ = function ($query = "", $options = "", $extras = "") {
 		case 'connect':
 			return $query_obj->connection($options);
 			break;
+
 		// disconnect from the database
 		case 'disconnect':
 			$query_obj->disconnect($options);
@@ -39,6 +40,7 @@ $_ = function ($query = "", $options = "", $extras = "") {
 		case 'link':
 			return $query_obj->link();
 			break;
+
 		// run a literal query and overwrites the default return type with the value 
 		case 'single:':
 		case 'insertid:':
@@ -50,6 +52,7 @@ $_ = function ($query = "", $options = "", $extras = "") {
 		case ':':
 			return $query_obj->query($args, $options);
 			break;
+
 		// short hand action for getting everything (*) from a table
 		case '*':
 			$tmp_args[0] = 'SELECT * FROM ';
@@ -68,6 +71,7 @@ $_ = function ($query = "", $options = "", $extras = "") {
 			$args = $tmp_args;
 			return $query_obj->query($args, "default");
 			break;
+
 		// short hand action for getting count(*) from a table
 		case 'count(*)':
 			$tmp_args[0] = 'SELECT COUNT(*) FROM ';
@@ -86,6 +90,7 @@ $_ = function ($query = "", $options = "", $extras = "") {
 			$args = $tmp_args;
 			return $query_obj->query($args, "single");
 			break;
+
 		// unknowed action, return error
 		default:
 			error_log("WOW (not an option): " . $action . " \n query: " . print_r($query, true) . 
@@ -95,7 +100,7 @@ $_ = function ($query = "", $options = "", $extras = "") {
 	}
 };
 
-class ExternalQuery {
+class QueryClass {
 	static $link = NULL;
 	static $result = NULL;
 	static $ret = "assoc"; 
@@ -140,12 +145,10 @@ class ExternalQuery {
 		self::$result = self::$link->query($q);
 		if (! self::$result) {
 			error_log("WOW (query): " . $q);
-			
 			return false;
 		}
 		elseif (! empty($opts)) {
 			$res = self::result($opts);
-			
 			return $res;
 		}
 		return true;

@@ -144,6 +144,18 @@
 
 						<div id="grid-container" class="cbp-l-grid-masonry">
 						<ul>
+							<li class="cbp-item frame netart"> <a class="cbp-caption cbp-singlePage" href="<:PORTFOLIO_SANITIZE_ROUTE/>">
+								<div class="cbp-caption-defaultWrap"> <img src="style/images/art/sanitize.jpg" alt=""> </div>
+								<div class="cbp-caption-activeWrap">
+									<div class="cbp-l-caption-alignCenter">
+										<div class="cbp-l-caption-body">
+											<div class="cbp-l-caption-title"><:PORTFOLIO_SANITIZE/></div>
+										</div>
+									</div>
+								</div>
+								</a> 
+							</li>
+
 							<li class="cbp-item frame netart"> <a class="cbp-caption" href="works/padi/netart/npc/index.html" target="_blank">
 								<div class="cbp-caption-defaultWrap"> <img src="style/images/art/npc.jpg" alt=""> </div>
 								<div class="cbp-caption-activeWrap">
@@ -607,7 +619,7 @@
 				}, 750, 'linear');
 			});
 
-			var backfilename = "/style/images/backgrounds/bg" + Math.floor((Math.random() * 5) + 1) + ".jpg";
+			var backfilename = "/style/images/backgrounds/bg" + Math.floor((Math.random() * 5) + 1) + "b.jpg";
 			$.backstretch([backfilename]);
 
 			$(".backstretch").css("background-image", "url("+backfilename+")");
