@@ -2,10 +2,7 @@
 	if (have_posts()): 
 		while (have_posts()) : 
 			the_post(); 
-			
 			$post_cats = get_the_category();
-
-			if (! empty($post_cats) && $post_cats[0]->name == "Cuentos") continue;
 	?>
 	<div class="row" style="margin-bottom: 40px;">
 		<?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>

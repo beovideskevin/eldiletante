@@ -19,16 +19,17 @@
 	<link rel="shortcut icon" href="/style/images/favicon.png">
 
 	<!-- Bootstrap core CSS -->
-	<link href="/style/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/style/css/plugins.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<!-- <link href="/style/css/bootstrap.min.css" rel="stylesheet"> -->
+	<link href="/style/css/plugins.min.css" rel="stylesheet">
 	<link href="/style/css/prettify.css" rel="stylesheet">
-	<link href="/style/css/style.css" rel="stylesheet">
+	<link href="/style/css/style.min.css" rel="stylesheet">
 	<link href="/style/css/color/green.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Raleway:400,800,700,600,500,300' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
-	<link href="/style/type/fontello.css" rel="stylesheet">
-	<link href="/style/type/budicons.css" rel="stylesheet">
+	<link href="/style/type/fontello.min.css" rel="stylesheet">
+	<link href="/style/type/budicons.min.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
@@ -44,10 +45,6 @@
 
 		#alegreya {
 			font-family: 'Alegreya Sans', sans-serif;
-		}
-
-		.zoom-this {
-
 		}
 
 		@media all and (max-width: 600px){
@@ -450,7 +447,7 @@
 						<div class="col-md-9 col-md-pull-3 col-sm-12">
 							<!-- <p class="lead">"El diletantismo es noble, y quien es noble es diletante. Por el contrario, es vulgar todo lo que significa gremio y especialidad y profesión." Johann Wolfgang Goethe </p> -->
 							<!-- class="myjustify"  -->
-							<p><:ABOUT_SUBLABEL/></p>
+							<:ABOUT_SUBLABEL/>
 						</div>
 						<!-- /column -->
 					</div>
@@ -470,13 +467,13 @@
 						<div class="row">
 							<:ABOUT_CONTENT_STORE/>
 
-							<:ABOUT_CONTENT_THEORY/>
+							<:ABOUT_CONTENT_LICENCE/>
 
 							<:ABOUT_CONTENT_DIV/>
 
 							<:ABOUT_CONTENT_EDD/>
 
-							<:ABOUT_CONTENT_LICENCE/>
+							<:ABOUT_CONTENT_THEORY/>
 						</div>
 						<!-- /.row -->
 
@@ -587,7 +584,7 @@
 				<ul class="social pull-right">
 					<li><a href="https://www.facebook.com/eldiletantedigital" target="_blank"><i class="icon-s-facebook"></i></a></li>
 					<li><a href="https://www.instagram.com/eldiletantedigital/" target="_blank"><i class="icon-s-instagram"></i></a></li>
-					<li><a href="https://www.vimeo.com/eldiletante" target="_blank"><i class="icon-s-vimeo"></i></a></li>
+					<!-- <li><a href="https://www.vimeo.com/eldiletante" target="_blank"><i class="icon-s-vimeo"></i></a></li> --> 
 				</ul>
 				<div class="clearfix"></div>
 			</footer>
@@ -598,14 +595,16 @@
 
 	</div>
 	<!-- /.body-wrapper -->
-	<script src="/style/js/jquery.min.js"></script>
-	<script src="/style/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<!-- <script src="/style/js/jquery.min.js"></script> -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+	<!-- <script src="/style/js/bootstrap.min.js"></script> -->
 	<script src="/style/js/jquery.themepunch.tools.min.js"></script>
 	<script src="/style/js/classie.js"></script>
 	<script src="/style/js/plugins.js"></script>
-	<script src="/style/js/scripts.js"></script>
+	<script src="/style/js/scripts.min.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
-	<script src="/style/js/jquery.ripples.js"></script>
+	<script src="/style/js/jquery.ripples.min.js"></script>
 
 	<script>
 		var is_focussed = true;
@@ -665,12 +664,6 @@
 		function onFocus(){
 			is_focussed = true;
 		};
-
-		// we have a customer!!! :)
-		/* $.ajax({
-			type: "POST",
-			url: "/ajax/counter"
-		}); */
 
 	</script>
 </body>

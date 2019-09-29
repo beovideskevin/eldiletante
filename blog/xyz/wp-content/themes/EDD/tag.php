@@ -41,7 +41,7 @@ get_header();
         <div class="blog-posts">
 			<div class="post box" > <!-- id="post-<?php the_ID(); ?>"  -->
 			
-			<?php get_template_part('loop'); ?>
+			<?php get_template_part('loop_cuentos'); ?>
 			
 			</div>
 			<!-- /.post -->
