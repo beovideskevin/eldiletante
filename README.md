@@ -1,2 +1,2 @@
 # eldiletante
-Visit <a href="eldiletante.com">eldiletante.com</a>
+Visit <a href="http://eldiletante.com">eldiletante.com</a>
