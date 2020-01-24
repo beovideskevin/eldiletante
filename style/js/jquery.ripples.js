@@ -200,7 +200,7 @@
 	
 		image.width = $('.backstretch').css('width').replace('px','');
 		image.height = image.width * 1594 / 1990; 
-			
+
 		this.visible = true;
 		
 		// Init animation

@@ -10,7 +10,7 @@ session_start();
 
 require_once('$_.php');
 
-$_("init");
+$_("run");
 
 function index ($args = [])
 {
@@ -19,26 +19,26 @@ function index ($args = [])
 	if (! empty($args['lang']) && in_array($args['lang'], ['es', 'en'])) {
 		$_SESSION['LANGUAGE_IN_USE'] = $args['lang'];
 
-		$_("language: {$_SESSION['LANGUAGE_IN_USE']}");
+		$_("setlang: {$_SESSION['LANGUAGE_IN_USE']}");
 	}
 
 	$results = [];
 
-	$_("render", $results);
+	return $results;
 }
 
 function langEs ($args = [])
 {
 	$args['lang'] = 'es';
 
-	index($args);
+	return index($args);
 }
 
 function langEn ($args = [])
 {
 	$args['lang'] = 'en';
 
-	index($args);
+	return index($args);
 }
 
 function gallery ($args = []) {
@@ -52,4 +52,10 @@ function show () {
 function ajax ($args = [])
 {
 	die("ajax");
+}
+
+function notFound ($args) {
+	error_log('WOW (404): ' . print_r($args, true));
+
+	return index($args);
 }
