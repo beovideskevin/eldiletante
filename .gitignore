@@ -1,8 +1,6 @@
-/.idea/
-/legacy/
+/.idea
+/legacy
 config.json
 /blog/xyz/wp-config.php
 /blog/xyz/wp-content/uploads/
 /aleph/$_.php
-error_log
-.htaccess
