@@ -10,7 +10,9 @@ session_start();
 
 require_once('$_.php');
 
-$_("run");
+$_("config: config");
+$_("connect");
+echo $_("render");
 
 function index ($args = [])
 {
