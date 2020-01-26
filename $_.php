@@ -1,24 +1,24 @@
 <?php
 
-/******************************************************************************
+/****************************************************************************************
 
-	My 2 cents - https://github.com/beovideskevin/my2cents
-	Copyright (c) 2016 Flow with the Code
+	My2cents - https://github.com/beovideskevin/my2cents
+	Copyright (c) 2019 El Diletante Digital
 
-    My 2 cents is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+	This is the main file of the framework and probably the only one you really need.
+	
+	My2cents is free software: you can redistribute it and/or modify it under the terms 
+	of the GNU General Public License as published by the Free Software Foundation, 
+	either version 3 of the License, or	(at your option) any later version.
 
-    My 2 cents is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	My2cents is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+	PURPOSE.  See the GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with My 2 cents. If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with My2cents. If not, see <http://www.gnu.org/licenses/>.
 
-******************************************************************************/
+*****************************************************************************************/
 
 /**
  * The "driver" to connect and query PostgreSQL
@@ -77,7 +77,7 @@ class PostgreSQLAdapter
 	 * Return the result of a query
 	 * @param $ret the type of result: insertid; single; obj; assoclist or assoc (this is the default)
  	 */ 
-	public function result ($ret = 'assoc') 
+	public function result ($ret = 'assoclist')
 	{
 		$ret = trimLower($ret);
 		
@@ -91,16 +91,16 @@ class PostgreSQLAdapter
 				
 			case 'obj':
 				return pg_fetch_object(self::$result);
-				
-			case 'assoclist':
+
+            case 'assoc':
+                return pg_fetch_assoc(self::$result);
+
+            case 'assoclist':
+            default:
 				$rows = [];
 				while($row = pg_fetch_assoc(self::$result))
 					$rows[] = $row;
 				return $rows;
-
-			case 'assoc':
-			default:
-				return pg_fetch_assoc(self::$result);
 		}
 	}
 }
@@ -163,10 +163,10 @@ class MySQLAdapter
 	 * Return the result of a query
 	 * @param $ret the type of result: insertid; single; obj; assoclist or assoc (this is the default)
  	 */ 
-	public function result ($ret = 'assoc') 
+	public function result ($ret = 'assoclist')
 	{
 		$ret = trimLower($ret);
-		
+
 		switch ($ret) {
 			case 'single':
 				$tmp = self::$result->fetch_row();
@@ -177,17 +177,18 @@ class MySQLAdapter
 
 			case 'obj':
 				return self::$result->fetch_object();
-				
-			case 'assoclist':
-				$rows = [];
-				while($row = self::$result->fetch_array(MYSQLI_ASSOC))
-					$rows[] = $row;
-				return $rows;
 
 			case 'assoc':
-			default:
-				return self::$result->fetch_assoc();
-		}
+                return self::$result->fetch_assoc();
+
+            case 'assoclist':
+            default:
+                $rows = [];
+                while($row = self::$result->fetch_array(MYSQLI_ASSOC))
+                    $rows[] = $row;
+                return $rows;
+
+        }
 	}
 }
 
@@ -903,7 +904,7 @@ class Template
 			$this->setLang();
 				
 		$all = array_merge($this->fullLanguage, $results);
-		
+
 		return $this->apply($this->fullLayout, $all, true); 
 	}
 }
