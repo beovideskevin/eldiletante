@@ -4,3 +4,4 @@ config.json
 /blog/xyz/wp-config.php
 /blog/xyz/wp-content/uploads/
 /works/others/aleph/$_.php
+/.htaccess
