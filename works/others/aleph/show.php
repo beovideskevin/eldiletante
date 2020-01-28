@@ -16,7 +16,7 @@ if (! empty($_GET['id'])) {
 		
 		// output the header 
 		echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-			<HTML><HEAD><TITLE>' . utf8_encode(htmlOut($author) . ' ' . htmlOut($title)) . '</TITLE>
+			<HTML><HEAD><TITLE>' . (htmlOut($author) . ' ' . htmlOut($title)) . '</TITLE>
 			<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 			<META content="MSHTML 6.00.2600.0" name=GENERATOR><LINK 
 			href="css/pens_estilo.css" type=text/css rel=STYLESHEET></HEAD>
@@ -25,12 +25,12 @@ if (! empty($_GET['id'])) {
 		
 		// output title and author
 		echo '<TR><TD bgColor=#006499><DIV class=titulo><B>' . (htmlOut($title)) . '</B></DIV></TD></TR>';
-		echo '<TR><TD><DIV class=autor><I>' . utf8_encode(htmlOut($author)) . '</I> </DIV></TD></TR>';
+		echo '<TR><TD><DIV class=autor><I>' . (htmlOut($author)) . '</I> </DIV></TD></TR>';
 		echo '<TR><TD><DIV class=Section1><p><br></p></DIV>';
 		
 		$lines = explode ("\n", $all['text']);
 		foreach ($lines as $l) {
-			echo '<DIV class=Section1><p>' . utf8_encode(htmlOut($l)) . '</p></DIV>';
+			echo '<DIV class=Section1><p>' . (htmlOut($l)) . '</p></DIV>';
 		}
 		
 		// finish the page
