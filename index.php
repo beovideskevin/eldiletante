@@ -12,7 +12,8 @@ require_once('$_.php');
 
 $_("config: config");
 $_("connect");
-echo $_("render");
+$results = $_("route");
+echo $_("render", $results);
 
 function index ($args = [])
 {
