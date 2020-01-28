@@ -24,7 +24,7 @@ if (! empty($_GET['id'])) {
 			<CENTER><TABLE cellSpacing=0 cellPadding=0 width="90%" border=0><TBODY>';
 		
 		// output title and author
-		echo '<TR><TD bgColor=#006499><DIV class=titulo><B>' . utf8_encode(htmlOut($title)) . '</B></DIV></TD></TR>';
+		echo '<TR><TD bgColor=#006499><DIV class=titulo><B>' . (htmlOut($title)) . '</B></DIV></TD></TR>';
 		echo '<TR><TD><DIV class=autor><I>' . utf8_encode(htmlOut($author)) . '</I> </DIV></TD></TR>';
 		echo '<TR><TD><DIV class=Section1><p><br></p></DIV>';
 		
