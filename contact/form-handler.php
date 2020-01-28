@@ -3,7 +3,7 @@
 	session_start();
 
     	$emailto = 'contact@eldiletante.com';
-	$emailfrom =  "info@eldiletante.com";
+	$emailfrom =  "info@eldiletantedigital.com";
     
 	// retrieve from parameters
 	
