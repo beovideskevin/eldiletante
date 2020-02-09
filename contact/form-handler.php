@@ -2,10 +2,11 @@
 
 	session_start();
 
-    $emailto = 'contact@eldiletante.com';
+    	$emailto = 'contact@eldiletante.com';
+	$emailfrom =  "info@eldiletantedigital.com";
     
 	// retrieve from parameters
-	$emailfrom = isset($_POST["email"]) ? $_POST["email"] : "";
+	
 	$nocomment = isset($_POST["nocomment"]) ? $_POST["nocomment"] : "";
 	$subject = 'Email from edd';
 	$message = '';
@@ -30,7 +31,8 @@
 							foreach ( $value as $two_dim_value ) {
 								$message .= "...$two_dim_value<br>";
 							}							
-						}else {
+						}
+						else {
 							$message .= $value != '' ? "$key: $value\n" : '';
 						}
 					}
