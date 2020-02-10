@@ -59,6 +59,24 @@ function ajax ($args = [])
 
 function notFound ($args) {
 	error_log('WOW (404): ' . print_r($args, true));
+	error_log('IP: ' . getRealIpAddr());
 
 	return index($args);
+}
+
+function getRealIpAddr()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+    {
+      $ip=$_SERVER['HTTP_CLIENT_IP'];
+    }
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+    {
+      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    else
+    {
+      $ip=$_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
 }
