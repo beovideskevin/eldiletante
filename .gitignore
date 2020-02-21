@@ -5,3 +5,4 @@ config.json
 /blog/xyz/wp-content/uploads/
 /works/others/aleph/$_.php
 /.htaccess
+/.ftpquota
