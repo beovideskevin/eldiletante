@@ -1,7 +1,6 @@
 /.idea
 /legacy
 config.json
-
 /works/others/aleph/$_.php
 /.htaccess
 /.ftpquota
