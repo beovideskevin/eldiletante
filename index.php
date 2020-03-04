@@ -61,7 +61,7 @@ function notFound ($args) {
 	error_log('WOW (404): ' . print_r($args, true));
 	error_log('IP: ' . getRealIpAddr());
 
-	return index($args);
+	return index();
 }
 
 function getRealIpAddr()
