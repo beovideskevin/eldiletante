@@ -1,0 +1,59 @@
+<div class="swiper-wrapper"> <a class="arrow-left" href="#"></a> <a class="arrow-right" href="#"></a>
+  <div class="swiper-container gallery">
+    <div class="swiper">
+      <div class="item">
+        <figure class="frame"><img src="/works/artware/cummings/images/cummings01.jpg" alt="" /></figure>
+      </div>
+      <!-- /.item -->
+      <div class="item">
+        <figure class="frame"><img src="/works/artware/cummings/images/cummings02.jpg" alt="" /></figure>
+      </div>
+	  <!-- /.item -->
+    <div class="item">
+      <figure class="frame"><img src="/works/artware/cummings/images/cummings03.jpg" alt="" /></figure>
+    </div>
+	  <!-- /.item -->
+    </div>
+    <!-- /.swiper -->
+  </div>
+  <!-- /.swiper-container -->
+</div>
+<!-- /.swiper-wrapper -->
+
+<div class="container inner">
+  <div class="box">
+	  
+    <h1 class="post-title">Nadie, ni siquiera la lluvia, tiene manos tan pequeñas</h1>
+    <p></p>
+    <div class="divide10">La pieza consiste en una imagen pornográfica de arte ASCII combinada con un Raspberry Pi donde se reproduce el poema de E. E. Cummings titlado: "somewhere i have never travelled,gladly beyond" leído por el propio author.  </div>
+    <!-- <a href="#" class="btn">More Info</a> -->
+    
+  </div>
+  <!-- /.box -->
+</div>
+<!-- /.container -->
+
+<!-- INSERT PAGE SCRIPTS HERE -->
+<script type="text/javascript">
+	$('.swiper-container.gallery').each(function(){
+		  $(this).swiper({
+		     grabCursor: true,
+		    slidesPerView: 'auto',
+		    wrapperClass: 'swiper',
+		    slideClass: 'item',
+		    offsetPxBefore: 0,
+		     offsetPxAfter: 0
+		  });
+		
+		  var $swipers = $(this);
+		
+		  $swipers.siblings('.arrow-left').click(function(){
+		$swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex-1);
+		return false;
+		});
+		$swipers.siblings('.arrow-right').click(function(){
+		$swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex+1);
+		return false;
+		});
+	});
+</script>
