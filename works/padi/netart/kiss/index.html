@@ -21,13 +21,11 @@
 		img {
 			display: none;
 		} 
-		
-		canvas {
+
+		#gameCanvas {
 			padding: 0;
 			margin: auto;
 			display: block;
-			width: 800px;
-			height: 600px;
 			position: absolute;
 			top: 0;
 			bottom: 0;
@@ -90,10 +88,22 @@
 			}
 		}
 
+		window.onresize = function() {
+			if (window.innerWidth < 800 || window.innerHeight < 600) {
+				canvas.width  = window.innerWidth; // in pixels
+				canvas.height = window.innerHeight; // in pixels
+			}
+		}
+
 		window.onload = function() {
 			canvas = document.getElementById('gameCanvas');
 			canvasContext = canvas.getContext('2d');
 			canvasContext.font = "30px Verdana";
+
+			if (window.innerWidth < 800 || window.innerHeight < 600) {
+				canvas.width  = window.innerWidth; // in pixels
+				canvas.height = window.innerHeight; // in pixels
+			}
 			
 			fidel = document.getElementById("fidel");
 			bernie = document.getElementById("bernie");
