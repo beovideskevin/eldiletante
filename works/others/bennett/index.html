@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="description" content="">
+        <meta name="author" content="Kevin Beovides Casas">
+        
+        <meta property="og:image" content="http://www.eldiletantedigital.com/style/images/art/bennet.jpg" />
+        <meta property="og:title" content="Bennett" />
+        <meta property="og:site_name" content="El Diletante Digital, sitio web de Kevin Beovides Casas"/>
+        <meta property="og:url" content="http://www.eldiletantedigital.com" />
+        <meta property="og:description" content="El Diletante Digital es un sitio web dedicado a la literatura hipertextual, ciberliteratura, literatura digital, poesía electrónica, net.art, hacker art, arte de los nuevos medios, new media art y arte digital." />
+        <meta property="article:author" content="https://www.facebook.com/diletantedigital" />
+        
+        <title>Bennett</title>
+        
+        <link rel="icon" href="../../../style/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../../../style/images/favicon.ico" type="image/x-icon">
+        <script src="../../common/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <script src="../../common/p5/p5.js"></script>
+        <script src="../../common/p5/addons/p5.dom.js"></script>
+        
+        <style>
+            body { 
+                padding: 0; 
+                margin: 0;
+                background-color: #ffffff; 
+            }
+        </style>
+    </head>
+    <body>
+        <div id="poem">
+
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $.ajax("/390e53ab5ee8a5e7032be0121864ca121cfa3ff1/poem")
+                .done(function(data) {
+                    console.log(data);
+
+                    html = "";
+                    verses = JSON.parse(data);
+                    for (i=0; i < verses.length; i++) {
+                        html += verses[i]; 
+                    }
+                    $("#poem").html(html);
+                })
+                .fail(function() {
+                    alert( "error" );
+                })
+            });
+        </script>
+    </body>
+</html>
