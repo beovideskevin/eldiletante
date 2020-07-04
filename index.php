@@ -108,23 +108,23 @@ function bennettapp($args)
 
 		if (isset($output['success']) && $output['success'] == true) {
 			$fullText = utf8_encode($args['editordata']);
-			$_("insertid: INSERT INTO bennettapp (piece, more) VALUES ('?', '?')", [$fullText, ""]);
+			$_("insertid: INSERT INTO bennettapp (verse, more) VALUES ('?', '?')", [$fullText, ""]);
 
 			// preg_match_all('#<p(.+?)</p>#is', $fullText, $matches); 
 			// foreach ($matches[0] as $m) {
-			// 	$i = $_("insertid: INSERT INTO bennettapp (piece, more) VALUES ('?', '?')", [$m, ""]);
+			// 	$i = $_("insertid: INSERT INTO bennettapp (verse, more) VALUES ('?', '?')", [$m, ""]);
 			// 	if ($i) {
 			// 		$res = $_("assoc: SELECT * FROM bennettapp WHERE id = ?", [$i]);
-			// 		if (isset($res['piece'])) {
-			// 			$piece = utf8_decode($res['piece']);
-			// 			$results['RESULT'] .= $piece;
+			// 		if (isset($res['verse'])) {
+			// 			$verse = utf8_decode($res['verse']);
+			// 			$results['RESULT'] .= $verse;
 			// 		}
 			// 	}
 			// } 
 		}
 	}
-	else if (isset($args['pieceId']) && !empty($args['pieceId'])) {
-		$_(": DELETE FROM bennettapp WHERE id = ?", [$args['pieceId']]);
+	else if (isset($args['verseId']) && !empty($args['verseId'])) {
+		$_(": DELETE FROM bennettapp WHERE id = ?", [$args['verseId']]);
 	}
 
 	$verses = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
@@ -139,8 +139,8 @@ function bennettapp($args)
 								</thead>
 								<tbody>';
 		foreach ($verses as $v) {
-			$results['TABLE'] .= '<tr><td><pre><code>' . utf8_decode($v['piece']) . '</code></pre></td>' .
-								 '<td><a class="button-primary" href="/390e53ab5ee8a5e7032be0121864ca121cfa3ff1?pieceId='.$v['id'].'">Del</a></td></tr>';
+			$results['TABLE'] .= '<tr><td><pre><code>' . utf8_decode($v['verse']) . '</code></pre></td>' .
+								 '<td><a class="button-primary" href="/390e53ab5ee8a5e7032be0121864ca121cfa3ff1?verseId='.$v['id'].'">Del</a></td></tr>';
 		}
 
 		$results['TABLE'] .= '</tbody></table>';
@@ -160,7 +160,8 @@ function poemBennettApp()
 		$many = rand(1, count($verses));
 
 		for ($i=0; $i < $many; $i++) {
-			$poem[] = $verses[$i];
+			$verses[$i]['verse'] = utf8_decode($verses[$i]['verse']);
+			$poem[] = $verses[$i]['verse'];
 		}
 	}
 
