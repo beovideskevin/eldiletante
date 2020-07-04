@@ -108,14 +108,7 @@ function bennettapp($args)
 
 		if (isset($output['success']) && $output['success'] == true) {
 			$fullText = utf8_encode($args['editordata']);
-			$i = $_("insertid: INSERT INTO bennettapp (piece, more) VALUES ('?', '?')", [$fullText, ""]);
-			if ($i) {
-				$res = $_("assoc: SELECT * FROM bennettapp WHERE id = ?", [$i]);
-				if (isset($res['piece'])) {
-					$piece = utf8_decode($res['piece']);
-					$results['RESULT'] .= $piece;
-				}
-			}
+			$_("insertid: INSERT INTO bennettapp (piece, more) VALUES ('?', '?')", [$fullText, ""]);
 
 			// preg_match_all('#<p(.+?)</p>#is', $fullText, $matches); 
 			// foreach ($matches[0] as $m) {
@@ -181,8 +174,6 @@ function egoapp($args)
 
 		if (isset($output['success']) && $output['success'] == true) {	
 			$_(": INSERT INTO egoapp (quote, more) VALUES ('?', '?')", [$args['editordata'], ""]);
-
-			$results['RESULT'] = $args['editordata'];
 		}
 	}
 	else if (isset($args['quoteId']) && !empty($args['quoteId'])) {
