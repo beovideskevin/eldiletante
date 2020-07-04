@@ -16,21 +16,28 @@
         <link rel="icon" href="../../../style/images/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="../../../style/images/favicon.ico" type="image/x-icon">
         <script src="../../common/jquery-1.11.3.min.js" type="text/javascript"></script>
-        <script src="../../common/p5/p5.js"></script>
-        <script src="../../common/p5/addons/p5.dom.js"></script>
-        
+        <!-- <script src="../../common/p5/p5.js"></script>
+        <script src="../../common/p5/addons/p5.dom.js"></script> 
+        <link href="/style/css/skeleton.min.css" rel="stylesheet">
+        <link href="/style/css/normalize.min.css" rel="stylesheet"> --> 
         <style>
             body { 
                 padding: 0; 
                 margin: 0;
                 background-color: #ffffff; 
             }
+
+            #poem {
+                white-space: pre;
+            }
+
+            p {
+                margin-top: 20px !important;
+            }
         </style>
     </head>
     <body>
-        <div id="poem">
-
-        </div>
+        <div id="poem"></div>
 
         <script>
             $(document).ready(function () {
