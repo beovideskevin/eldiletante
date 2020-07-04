@@ -108,17 +108,26 @@ function bennettapp($args)
 
 		if (isset($output['success']) && $output['success'] == true) {
 			$fullText = utf8_encode($args['editordata']);
-			preg_match_all('#<p(.+?)</p>#is', $fullText, $matches); 
-			foreach ($matches[0] as $m) {
-				$i = $_("insertid: INSERT INTO bennettapp (piece, more) VALUES ('?', '?')", [$m, ""]);
-				if ($i) {
-					$res = $_("assoc: SELECT * FROM bennettapp WHERE id = ?", [$i]);
-					if (isset($res['piece'])) {
-						$piece = utf8_decode($res['piece']);
-						$results['RESULT'] .= $piece;
-					}
+			$i = $_("insertid: INSERT INTO bennettapp (piece, more) VALUES ('?', '?')", [$fullText, ""]);
+			if ($i) {
+				$res = $_("assoc: SELECT * FROM bennettapp WHERE id = ?", [$i]);
+				if (isset($res['piece'])) {
+					$piece = utf8_decode($res['piece']);
+					$results['RESULT'] .= $piece;
 				}
-			} 
+			}
+
+			// preg_match_all('#<p(.+?)</p>#is', $fullText, $matches); 
+			// foreach ($matches[0] as $m) {
+			// 	$i = $_("insertid: INSERT INTO bennettapp (piece, more) VALUES ('?', '?')", [$m, ""]);
+			// 	if ($i) {
+			// 		$res = $_("assoc: SELECT * FROM bennettapp WHERE id = ?", [$i]);
+			// 		if (isset($res['piece'])) {
+			// 			$piece = utf8_decode($res['piece']);
+			// 			$results['RESULT'] .= $piece;
+			// 		}
+			// 	}
+			// } 
 		}
 	}
 	else if (isset($args['pieceId']) && !empty($args['pieceId'])) {
