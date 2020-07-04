@@ -127,9 +127,9 @@ function bennettapp($args)
 		$_(": DELETE FROM bennettapp WHERE id = ?", [$args['pieceId']]);
 	}
 
-	$poem = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
+	$verses = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
 
-	if ($poem) {
+	if ($verses) {
 		$results['TABLE'] = '<table class="u-full-width">
 								<thead>
 								<tr>
@@ -138,9 +138,9 @@ function bennettapp($args)
 								</tr>
 								</thead>
 								<tbody>';
-		foreach ($poem as $p) {
-			$results['TABLE'] .= '<tr><td><pre><code>' . utf8_decode($p['piece']) . '</code></pre></td>' .
-								 '<td><a class="button-primary" href="/390e53ab5ee8a5e7032be0121864ca121cfa3ff1?pieceId='.$p['id'].'">Del</a></td></tr>';
+		foreach ($verses as $v) {
+			$results['TABLE'] .= '<tr><td><pre><code>' . utf8_decode($v['piece']) . '</code></pre></td>' .
+								 '<td><a class="button-primary" href="/390e53ab5ee8a5e7032be0121864ca121cfa3ff1?pieceId='.$v['id'].'">Del</a></td></tr>';
 		}
 
 		$results['TABLE'] .= '</tbody></table>';
@@ -148,6 +148,28 @@ function bennettapp($args)
 
 	return $results;
 } 
+
+function poemBennettApp() 
+{
+	global $_;
+	$poem = [];
+
+	$verses = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
+
+	if (count($verses)) {
+		$many = rand(1, count($verses));
+
+		for ($i=0; $i < $many; $i++) {
+			$poem[] = $verses;
+		}
+	}
+
+	$results = [
+		"OUTPUT" => json_encode($poem)
+	];
+
+	return $results;
+}
 
 function egoapp($args) 
 {
@@ -198,6 +220,19 @@ function egoapp($args)
 
 		$results['TABLE'] .= '</tbody></table>';
 	}
+
+	return $results;
+}
+
+function listEgoApp()
+{
+	global $_;
+
+	$quotes = $_("assoclist: SELECT * FROM egoapp ORDER BY id DESC");
+
+	$results = [
+		"OUTPUT" => json_encode($quotes)
+	];
 
 	return $results;
 }
