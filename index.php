@@ -137,7 +137,7 @@ function bennettapp($args)
 								</thead>
 								<tbody>';
 		foreach ($poem as $p) {
-			$results['TABLE'] .= '<tr><td><pre><code>' . htmlentities(utf8_decode($p['piece'])) . '</code></pre></td>' .
+			$results['TABLE'] .= '<tr><td><pre><code>' . utf8_decode($p['piece']) . '</code></pre></td>' .
 								 '<td><a class="button-primary" href="/390e53ab5ee8a5e7032be0121864ca121cfa3ff1?pieceId='.$p['id'].'">Del</a></td></tr>';
 		}
 
@@ -192,7 +192,7 @@ function egoapp($args)
 								</thead>
 								<tbody>';
 		foreach ($quotes as $quote) {
-			$results['TABLE'] .= '<tr><td><pre><code>' . htmlentities($quote['quote']) . '</code></pre></td>' .
+			$results['TABLE'] .= '<tr><td><pre><code>' . $quote['quote'] . '</code></pre></td>' .
 								 '<td><a class="button-primary" href="/86698f625e85131b9aba4952f4aa2b7d632391c7?quoteId='.$quote['id'].'">Del</a></td></tr>';
 		}
 
