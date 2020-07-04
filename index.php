@@ -125,7 +125,7 @@ function bennettapp($args)
 		$_(": DELETE FROM bennettapp WHERE id = ?", [$args['pieceId']]);
 	}
 
-	$poem = $_("assoclist: SELECT * FROM bennettapp ORDER BY id ASC");
+	$poem = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
 
 	if ($poem) {
 		$results['TABLE'] = '<table class="u-full-width">
@@ -180,7 +180,7 @@ function egoapp($args)
 		$_(": DELETE FROM egoapp WHERE id = ?", [$args['quoteId']]);
 	}
 
-	$quotes = $_("assoclist: SELECT * FROM egoapp ORDER BY id ASC");
+	$quotes = $_("assoclist: SELECT * FROM egoapp ORDER BY id DESC");
 
 	if ($quotes) {
 		$results['TABLE'] = '<table class="u-full-width">
