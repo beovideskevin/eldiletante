@@ -160,8 +160,7 @@ function poemBennettApp()
 		$many = rand(1, count($verses));
 
 		for ($i=0; $i < $many; $i++) {
-			$verses[$i]['verse'] = utf8_decode($verses[$i]['verse']);
-			$poem[] = $verses[$i]['verse'];
+			$poem[] = utf8_decode($verses[$i]['verse']);
 		}
 	}
 
