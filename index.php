@@ -121,6 +121,28 @@ function bennettapp($args)
 			} 
 		}
 	}
+	else if (isset($args['pieceId']) && !empty($args['pieceId'])) {
+		$_(": DELETE FROM bennettapp WHERE id = ?", [$args['pieceId']]);
+	}
+
+	$poem = $_("assoclist: SELECT * FROM bennettapp ORDER BY id ASC");
+
+	if ($poem) {
+		$results['TABLE'] = '<table class="u-full-width">
+								<thead>
+								<tr>
+									<th>Quote</th>
+									<th>Action</th>
+								</tr>
+								</thead>
+								<tbody>';
+		foreach ($poem as $p) {
+			$results['TABLE'] .= '<tr><td><pre><code>'.$p['piece'].'</code></pre></td>' .
+								 '<td><a class="button-primary" href="/390e53ab5ee8a5e7032be0121864ca121cfa3ff1?pieceId='.$p['id'].'">Del</a></td></tr>';
+		}
+
+		$results['TABLE'] .= '</tbody></table>';
+	}
 
 	return $results;
 } 
@@ -133,7 +155,8 @@ function egoapp($args)
 
 	$results = [
 		"SITE_KEY" => $recaptcha['siteKey'],
-		"RESULT" => ""
+		"RESULT" => "",
+		"TABLE"  => ""
 	];
 
 	if (isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
@@ -152,6 +175,28 @@ function egoapp($args)
 
 			$results['RESULT'] = $args['editordata'];
 		}
+	}
+	else if (isset($args['quoteId']) && !empty($args['quoteId'])) {
+		$_(": DELETE FROM egoapp WHERE id = ?", [$args['quoteId']]);
+	}
+
+	$quotes = $_("assoclist: SELECT * FROM egoapp ORDER BY id ASC");
+
+	if ($quotes) {
+		$results['TABLE'] = '<table class="u-full-width">
+								<thead>
+								<tr>
+									<th>Quote</th>
+									<th>Action</th>
+								</tr>
+								</thead>
+								<tbody>';
+		foreach ($quotes as $quote) {
+			$results['TABLE'] .= '<tr><td><pre><code>'.$quote['quote'].'</code></pre></td>' .
+								 '<td><a class="button-primary" href="/86698f625e85131b9aba4952f4aa2b7d632391c7?quoteId='.$quote['id'].'">Del</a></td></tr>';
+		}
+
+		$results['TABLE'] .= '</tbody></table>';
 	}
 
 	return $results;
