@@ -160,7 +160,7 @@ function poemBennettApp()
 		$many = rand(1, count($verses));
 
 		for ($i=0; $i < $many; $i++) {
-			$poem[] = $verses;
+			$poem[] = $verses[$i];
 		}
 	}
 
@@ -171,7 +171,7 @@ function poemBennettApp()
 	return $results;
 }
 
-function egoapp($args) 
+function egoApp($args) 
 {
 	global $_;
 
