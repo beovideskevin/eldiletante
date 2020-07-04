@@ -475,7 +475,8 @@ class App
 	protected static $config = [], 
 				     $url = [], 
 				     $routes = [], 
-				     $includes = [];
+					 $includes = [],
+					 $enforce = "";
 
     /**
      * Returns the configuration
@@ -500,7 +501,7 @@ class App
 			die ('No configuration file or error while parsing it!');
 		
 		foreach (self::$config as $key => $value) {
-			switch (trimlower($key)) {
+			switch (trimLower($key)) {
 				// the main path
 				case 'files_base_path': 
 					DEFINE ('FILES_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . $value);
@@ -509,7 +510,7 @@ class App
 				// the path for the classes to include
 				case 'register': 
 					foreach (self::$config[$key] as $regKey => $regVal) {
-						switch (trimlower($regKey)) {
+						switch (trimLower($regKey)) {
 							case 'exceptions':
 								self::$includes['EXCEPTIONS'] = $regVal;
 								break;
@@ -528,13 +529,13 @@ class App
 				// set the routes
 				case 'routes': 
 					foreach (self::$config[$key] as $rKey => $rVal) {
-						switch (trimlower($regKey)) {
+						switch (trimLower($rKey)) {
 							case 'default':
-								self::$routes['DEFAULT'] = $rVal;
+								self::$routes['DEFAULT'] = $this->lowerKeys($rVal);
 								break;
 								
 							default:
-								self::$routes[$rKey] = $rVal;
+								self::$routes[trimLower($rKey)] = $this->lowerKeys($rVal);
 								break;
 						}
 					}
@@ -543,7 +544,7 @@ class App
 				// set the dafault template and language 
 				case 'template':
 					foreach (self::$config[$key] as $tKey => $tVal) {
-						switch (trimlower($tKey)) {
+						switch (trimLower($tKey)) {
 							case 'layout_path': 
 								DEFINE ('LAYOUT_PATH', $tVal);
 								break;
@@ -572,7 +573,7 @@ class App
 				// MySQL conection data
 				case 'database': 
 					foreach (self::$config[$key] as $dbKey => $dbVal) {
-						switch (trimlower($dbKey)) {
+						switch (trimLower($dbKey)) {
 							case 'adapter': 
 								Database::$adapter = $dbVal;
 								break;
@@ -598,7 +599,7 @@ class App
 				// SMTP email configuration	
 				case 'email': 
 					foreach (self::$config[$key] as $eKey => $eVal) {
-						switch (trimlower($eKey)) {
+						switch (trimLower($eKey)) {
 							case 'system': 
 								Email::$system = $eVal;
 								break;
@@ -629,6 +630,20 @@ class App
 		// if the main path is not set, lets set the default
 		if (!defined('FILES_BASE_PATH')) 
 			DEFINE ('FILES_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/');
+	}
+	
+	/**
+	 * Takes an array and turn al his keys lowercase recursively
+	 * @param type $item the input array
+	 */
+	protected function lowerKeys ($item = '') {
+		if (is_array($item))
+			return array_map(function ($item) {
+								return $this->lowerKeys($item);
+							},array_change_key_case($item)
+						);
+		else
+			return $item;
 	}
 	
 	/** 
@@ -663,6 +678,28 @@ class App
 			foreach ($otherFiles as $of)
 				$this->register($of . '/', $exceptions);
 	}
+
+	/**
+	 * Gets some info like layout, language, etc. that cascades down  
+	 * @param $action 
+	 */
+	public function processaction($action) {
+		// private area of the website
+		if (isset($action['enforce']))  
+			self::$enforce = $action['enforce'];
+		
+		// set the layout
+		if (isset($action['layout'])) 
+			Template::$defaultLayout = $action['layout'];
+		
+		// set the language
+		if (isset($action['language']))	
+			Template::$defaultLanguage = $action['language'];
+		
+		// register any needed classes
+		if (isset($action['register']))	
+			self::$includes['FOLDERS'] = $action['register'];
+	}
 	
 	/** 
 	 * Routes the app, that is calls the function or method inside a class that is requested
@@ -675,7 +712,7 @@ class App
 			$urlpath = $_REQUEST['_url'];
 				
 		if ($urlpath) {
-			$all = explode('/', $urlpath);
+			$all = explode('/', trimLower($urlpath));
 			foreach ($all as $value) {
 				if ($value) 
 					self::$url[] = $value;
@@ -686,8 +723,10 @@ class App
 			$args = $_REQUEST;
 					
 		// if there is no _url put the default
-		if (!self::$url) 
+		if (!self::$url) {
 			$action = self::$routes['DEFAULT'];
+			$this->processAction($action);
+		} 
 		else {
 			$action = self::$routes;
 			$index = 0;
@@ -696,27 +735,8 @@ class App
 				// check for the action
 				if (!empty($action[trimLower(self::$url[$index])])) { 
 					$action = $action[trimLower(self::$url[$index])];
+					$this->processAction($action);
 					$index++;
-					
-					// private area of the website
-					if (isset($action['enforce']))  
-						$enforce = $action['enforce'];
-					
-					// set the layout
-					if (isset($action['layout'])) 
-						Template::$defaultLayout = $action['layout'];
-					
-					// set the language
-					if (isset($action['language']))	
-						Template::$defaultLanguage = $action['language'];
-					
-					// register any needed classes
-					if (isset($action['register']))	
-						self::$includes['FOLDERS'] = $action['register'];
-					
-					// get the arguments if any 
-					if (!empty($action['args'])) 
-						$args = array_merge($args, json_decode($action['args'], true));
 				}
 				else {
 					$action = self::$routes['404'];
@@ -727,6 +747,9 @@ class App
 
         // if the result is still an array
         if (is_array($action)) {
+			// get the arguments if any 
+			if (!empty($action['args'])) 
+				$args = array_merge($args, json_decode($action['args'], true));
 
             // redirect to another url
             if (!empty($action['redirect'])) {
@@ -768,8 +791,8 @@ class App
 		}
 		
 		// call the function that enforces login
-		if (!empty($enforce) && is_callable($enforce)) 
-			call_user_func($enforce, $args);
+		if (!empty(self::$enforce) && is_callable(self::$enforce)) 
+			call_user_func(self::$enforce, $args);
 		
 		// lets call the main action inside a class
 		if (!empty($class) && is_callable([$c = new $class($args), $action])) 
@@ -790,10 +813,10 @@ class App
 class Template
 {
 	public static $defaultLayout = '',
-				  $defaultLanguage = '';
+				  $defaultLanguage = [];
 				  
-	protected $fullLanguage = '',
-		      $fullLayout = '';
+	protected $fullLayout = '',
+			  $fullLanguage = [];
 	
 	/**
 	 * Set the layout
@@ -921,9 +944,9 @@ class Template
 		if (!$this->fullLanguage) 
 			$this->setLang();
 				
-		$all = array_merge($this->fullLanguage, $results);
+		$tmpHtml = $this->apply($this->fullLayout, $results);
 
-		return $this->apply($this->fullLayout, $all, true); 
+		return $this->apply($tmpHtml, $this->fullLanguage, true); 
 	}
 }
 

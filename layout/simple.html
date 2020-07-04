@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<meta property="og:image" content="https://www.eldiletantedigital.com/style/images/edd.jpg" />
+	<meta property="og:title" content="El Diletante Digital, creado por Kevin Beovides Casas" />
+	<meta property="og:site_name" content="El Diletante Digital, creado por Kevin Beovides Casas"/>
+	<meta property="og:url" content="https://www.eldiletantedigital.com" />
+	<meta property="og:description" content="El Diletante Digital es una web dedicada al arte de los nuevos medios, arte digital, arte ascii, net.art, literatura digital, creada por Kevin Beovides Casas" />
+	<meta property="article:author" content="https://www.facebook.com/eldiletantedigital" />
+	
+	<meta name="description" content="<:DESCRIPTION/>">
+	<meta name="author" content="<:AUTHOR/>">
+	<meta name="keywords" content="<:KEYWORDS/>">
+	<title><:TITLE/></title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/style/images/favicon.ico">
+    
+	<!-- include libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+	<link href="/style/css/skeleton.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<form action="" method="post">
+			<textarea class="u-full-width" id="summernote" name="editordata"></textarea>
+				
+			<div class="row" style="padding-top: 10px;">
+				<div class="six columns">
+					<div class="g-recaptcha" data-sitekey="<:SITE_KEY/>"></div>
+				</div>
+
+				<div class="six columns">
+					<input type="submit" value="OK" name="submit" class="button-primary u-pull-right" />
+				</div>
+			</div>
+		
+			<div class="nocomment">
+				<label for="nocomment">Leave This Field Empty</label>
+				<input id="nocomment" value="" name="nocomment" />
+			</div>
+		</form>
+	</div>
+	
+	<div class="container">
+		<:RESULT/>
+	</div>
+
+	<!-- More JavaScript  -->
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<script>
+		$('.nocomment').hide();
+
+		$('#summernote').summernote({
+			placeholder: 'Hello stand alone ui',
+			tabsize: 2,
+			height: 120,
+			toolbar: [
+			['style', ['style']],
+			['font', ['bold', 'underline', 'clear']],
+			['para', ['paragraph']],
+			['view', ['fullscreen', 'codeview', 'help']]
+			]
+		});
+	</script>
+</body>

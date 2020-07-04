@@ -44,11 +44,13 @@ function langEn ($args = [])
 	return index($args);
 }
 
-function gallery ($args = []) {
+function gallery ($args = []) 
+{
 	header("location: https://www.deviantart.com/eldiletantedigital/");
 }
 
-function show () {
+function show () 
+{
 	header("location: https://www.deviantart.com/eldiletantedigital/");
 }
 
@@ -57,7 +59,8 @@ function ajax ($args = [])
 	die("ajax");
 }
 
-function notFound ($args) {
+function notFound ($args) 
+{
 	error_log('WOW (404): ' . print_r($args, true));
 	error_log('IP: ' . getRealIpAddr());
 
@@ -68,15 +71,88 @@ function getRealIpAddr()
 {
     if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
     {
-      $ip=$_SERVER['HTTP_CLIENT_IP'];
+    	$ip=$_SERVER['HTTP_CLIENT_IP'];
     }
     elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
     {
-      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+    	$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
     }
     else
     {
-      $ip=$_SERVER['REMOTE_ADDR'];
+    	$ip=$_SERVER['REMOTE_ADDR'];
     }
     return $ip;
+}
+
+function bennettapp($args) 
+{
+	global $_;
+
+	$recaptcha = $_("getConfig: recaptcha");
+
+	$results = [
+		"SITE_KEY" => $recaptcha['siteKey'],
+		"RESULT" => ""
+	];
+
+	if (isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
+		isset($args['editordata']) && !empty($args['editordata'])) {
+		
+		$output = json_decode(
+			file_get_contents(
+				"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
+				"&response=" . $args['g-recaptcha-response']
+			), 
+			true
+		);
+
+		if (isset($output['success']) && $output['success'] == true) {
+			$fullText = utf8_encode($args['editordata']);
+			preg_match_all('#<p(.+?)</p>#is', $fullText, $matches); 
+			foreach ($matches[0] as $m) {
+				$i = $_("insertid: INSERT INTO bennettapp (piece, more) VALUES ('?', '?')", [$m, ""]);
+				if ($i) {
+					$res = $_("assoc: SELECT * FROM bennettapp WHERE id = ?", [$i]);
+					if (isset($res['piece'])) {
+						$piece = utf8_decode($res['piece']);
+						$results['RESULT'] .= $piece;
+					}
+				}
+			} 
+		}
+	}
+
+	return $results;
+} 
+
+function egoapp($args) 
+{
+	global $_;
+
+	$recaptcha = $_("getConfig: recaptcha");
+
+	$results = [
+		"SITE_KEY" => $recaptcha['siteKey'],
+		"RESULT" => ""
+	];
+
+	if (isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
+		isset($args['editordata']) && !empty($args['editordata'])) {
+	
+		$output = json_decode(
+			file_get_contents(
+				"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
+				"&response=" . $args['g-recaptcha-response']
+			), 
+			true
+		);
+
+		if (isset($output['success']) && $output['success'] == true) {	
+			$_(": INSERT INTO egoapp (quote, more) VALUES ('?', '?')", [$args['editordata'], ""]);
+
+			$results['RESULT'] = $args['editordata'];
+		}
+	}
+
+	return $results;
 }

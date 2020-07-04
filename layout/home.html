@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	
 	<meta property="og:image" content="https://www.eldiletantedigital.com/style/images/edd.jpg" />
 	<meta property="og:title" content="El Diletante Digital, creado por Kevin Beovides Casas" />
@@ -16,10 +17,10 @@
 	<meta name="keywords" content="<:KEYWORDS/>">
 	<title><:TITLE/></title>
 	
+	<!-- Favicon -->
 	<link rel="shortcut icon" href="/style/images/favicon.ico">
 
-	<!-- Bootstrap core CSS -->
-	<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+	<!-- Stylesheets -->
 	<link href="/style/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/style/css/plugins.min.css" rel="stylesheet">
 	<link href="/style/css/prettify.css" rel="stylesheet">
@@ -38,6 +39,7 @@
 		  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 		  <![endif]-->
 
+	<!-- Custom Stylesheet  -->
 	<style>
 		.myjustify {
 			text-align: justify;
@@ -131,21 +133,21 @@
 			<section id="portfolio" class="portfolio">
 				<div class="box">
 					<h2 class="section-title pull-left"><:PORTFOLIO_LABEL/></h2>
-						<div id="filters-container" class="cbp-l-filters-alignRight pull-right">
-							<div data-filter="*" class="cbp-filter-item-custom-active cbp-filter-item-custom btn"><:ALL_LINK/></div>
-							<div data-filter=".asciiart" class="cbp-filter-item-custom btn"><:AART_LINK/></div>
-							<div data-filter=".artware" class="cbp-filter-item-custom btn"><:ARTWARE_LINK/></div>
-							<!-- <div data-filter=".netart" class="cbp-filter-item-custom btn"><:NETART_LINK/></div>
-							<div data-filter=".cyber" class="cbp-filter-item-custom btn"><:CYBER_LINK/></div> -->
-							<div data-filter=".otras" class="cbp-filter-item-custom btn"><:OTHER_LINK/></div>
-						</div>
-						<!-- /#filters-container -->
 
-						<div class="clearfix"></div>
+					<div id="filters-container" class="cbp-l-filters-alignRight pull-right">
+						<div data-filter="*" class="cbp-filter-item-custom-active cbp-filter-item-custom btn"><:ALL_LINK/></div>
+						<div data-filter=".asciiart" class="cbp-filter-item-custom btn"><:AART_LINK/></div>
+						<div data-filter=".artware" class="cbp-filter-item-custom btn"><:ARTWARE_LINK/></div>
+						<!-- <div data-filter=".netart" class="cbp-filter-item-custom btn"><:NETART_LINK/></div>
+						<div data-filter=".cyber" class="cbp-filter-item-custom btn"><:CYBER_LINK/></div> -->
+						<div data-filter=".otras" class="cbp-filter-item-custom btn"><:OTHER_LINK/></div>
+					</div>
+					<!-- /#filters-container -->
 
-						<div id="grid-container" class="cbp-l-grid-masonry">
+					<div class="clearfix"></div>
+
+					<div id="grid-container" class="cbp-l-grid-masonry">
 						<ul>
-
 							<li class="cbp-item frame asciiart"> <a class="cbp-caption" target="_blank" href="https://www.facebook.com/pg/eldiletantedigital/photos/?tab=album&album_id=2696416267085864">
 							  <div class="cbp-caption-defaultWrap"> <img src="/style/images/art/lisa.jpg" alt=""> </div>
 							  <div class="cbp-caption-activeWrap">
@@ -488,7 +490,6 @@
 							  </div>
 							  </a>
 							</li>
-
 						</ul>
 					</div>
 					<!-- /.cbp-l-grid-masonry -->
@@ -661,9 +662,9 @@
 
 	</div>
 	<!-- /.body-wrapper -->
-	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> -->
+
+	<!-- External JavaScripts  -->
 	<script src="/style/js/jquery.min.js"></script>
-	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> -->
 	<script src="/style/js/bootstrap.min.js"></script> 
 	<script src="/style/js/jquery.themepunch.tools.min.js"></script>
 	<script src="/style/js/classie.js"></script>
@@ -672,6 +673,7 @@
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<script src="/style/js/jquery.ripples.min.js"></script>
 
+	<!-- Custom Javascript -->
 	<script>
 		var is_focussed = true;
 
