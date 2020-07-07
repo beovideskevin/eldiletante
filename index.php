@@ -158,7 +158,7 @@ function poemBennettApp()
 	$verses = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
 
 	if (count($verses)) {
-		$many = rand(5, 15);
+		$many = rand(5, 12);
 		for ($c = 0; $c < $many; $c++) {
 			while (in_array(($i = rand(1, count($verses)) - 1), $used)) {}
 			$poem[] = utf8_decode($verses[$i]['verse']);
