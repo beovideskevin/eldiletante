@@ -15,10 +15,12 @@
         
         <link rel="icon" href="../../../style/images/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="../../../style/images/favicon.ico" type="image/x-icon">
+
         <script src="../../common/jquery-1.11.3.min.js" type="text/javascript"></script>
-        <!-- <script src="../../common/p5/p5.js"></script>
+        <script src="../../common/p5/p5.js"></script>
         <script src="../../common/p5/addons/p5.dom.js"></script> 
-        <link href="/style/css/skeleton.min.css" rel="stylesheet">
+
+        <!-- <link href="/style/css/skeleton.min.css" rel="stylesheet">
         <link href="/style/css/normalize.min.css" rel="stylesheet"> --> 
         <style>
             body { 
@@ -26,7 +28,7 @@
                 margin: 10px;
                 background-color: #ffffff; 
             }
-
+		
             /* #poem {
                 white-space: pre;
             } */
@@ -34,6 +36,10 @@
             p {
                 margin-top: 20px !important;
                 margin-left: 0px !important;
+            }
+
+            .emphasis {
+                font-weight: bold;
             }
         </style>
     </head>
@@ -57,6 +63,91 @@
                     alert( "error" );
                 })
             });
+
+            
+            var general = {
+                background: "",
+                width: "", 
+                height: "",
+                nodes: [
+                    {
+                        text: "STUNG IN FOG HOLE my cli \n pping suit returns glares your hopping half sort",
+                        style: {
+                            font: "serif", // can be: serif, sans serif, monospace
+                            size: "8", // can be: 8, 10, 12, 14, 16, 18, 20, 22, 24
+                            weight: "bold", // can be: normal, bold
+                            style: "normal", // can be: normal, italic
+                            align: "center", // can be: left, center, right
+                            grid: "4" // can be: 1, 2, 3, 4
+                        }
+                    },
+                    {
+                        text: "sky and sweat loose [grave L's deimmersion] wave ≈ \n (lunchmeat) - huddles in yr shorts"
+                    },
+                    {
+                        text: "fog brick fog brick fog \n brick fog brick fog brick \n fog brick LEG br"
+                    },
+                    {
+                        text: "ick endeble es o era ,mis huevos se fueron que \n brados e intentativos qué soberbios qué desinflados los que \n mondaste ayer que hoy )ni ver ni voy al supermercado("
+                    }
+                ],
+                used: [],
+                show : []
+            };
+
+            var randomFactor = 2;
+            var fontArr = ["serif",	"sans-serif", "monospace", "fantasy", "cursive"];
+            var sizeArr = ["16", "8", "10", "12", "14", "18", "20", "22", "24"];
+            var weightArr = ["normal", "bold"];
+            var styleArr = ["normal", "italic"];
+            var alignArr = ["left", "right", "center"];
+            var gridArr = ["1", "2", "3", "4"];
+
+            for (var i = 0; i < general.nodes.length; i++) {
+                do {
+                    randomIndex = Math.round((general.nodes.length - 1) * Math.random());
+                } while ( general.used.indexOf(randomIndex) != -1);
+                
+                general.used.push(randomIndex);
+                
+                newNode = {text: "", style: {}};
+                
+                newNode.text = general.nodes[randomIndex].text.replace(/\n/g, "<br>")
+                                                            .replace("[", "<span class=\"emphasis\">")
+                                                            .replace("]", "</span>");
+                
+                general.nodes[randomIndex].style = general.nodes[randomIndex].style || {};
+                
+                newNode.style.font = general.nodes[randomIndex].style.font ||
+                                    (Math.round((randomFactor) * Math.random()) ? fontArr[0] : 
+                                    fontArr[Math.round((fontArr.length - 1) * Math.random())]);
+                
+                newNode.style.size = general.nodes[randomIndex].style.size || 
+                                    (Math.round((randomFactor) * Math.random()) ? sizeArr[0] : 
+                                    sizeArr[Math.round((sizeArr.length - 1) * Math.random())]);
+                
+                newNode.style.weight = general.nodes[randomIndex].style.weight || 
+                                    (Math.round((randomFactor) * Math.random()) ? weightArr[0] : 
+                                    weightArr[Math.round((weightArr.length - 1) * Math.random())]);
+                
+                newNode.style.style = general.nodes[randomIndex].style.style || 
+                                    (Math.round((randomFactor) * Math.random()) ? styleArr[0] : 
+                                    styleArr[Math.round((styleArr.length - 1) * Math.random())]);
+                    
+                newNode.style.align = general.nodes[randomIndex].style.align ||
+                                    (Math.round((randomFactor) * Math.random()) ? alignArr[0] : 
+                                    alignArr[Math.round((alignArr.length - 1) * Math.random())]);
+                
+                newNode.style.grid = general.nodes[randomIndex].style.grid || 
+                                    (Math.round((randomFactor) * Math.random()) ? gridArr[0] : 
+                                    gridArr[Math.round((gridArr.length - 1) * Math.random())]);
+                                                                
+                general.show.push(newNode);
+            }
+
+            console.log(general.show);
+
+
         </script>
     </body>
 </html>
