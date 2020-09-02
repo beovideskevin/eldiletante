@@ -1,0 +1,140 @@
+<html onclick="setFocus()">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link rel="icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+	<link rel="shortcut icon" href="../../../../style/images/favicon.ico" type="image/x-icon" >
+	
+	<title>En el Cuarto de un Suicida, un cuento interactivo de El Diletante Digital</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/items.js" type="text/javascript"></script>
+	<script src="js/map.js" type="text/javascript"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+</head>
+<body style="overflow: hidden" onclick="setFocus()">
+	"En el cuarto de un suicida"<br>
+	<div id="screen">
+	</div>
+	
+	<div id="deadWrapper">
+		<p id="die">Ud. está muerto. ¿Desea volver a jugar? (Y/n)&nbsp;</p>
+		<input name="l2" id="l2" onkeydown="return oneKey(event);" autocomplete="off" type="text">
+	</div>
+	
+	<form onsubmit="return new_line();">
+		<table id="il">
+			<tbody>
+				<tr id="commandLine">
+					<td>&gt;</td>
+					<td id="ii"><input name="l1" id="l1" onkeydown="return handle(event);" autocomplete="off" type="text"></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	
+	<script type="text/javascript">
+		// document objects
+		var line;
+		var line2;
+		var scr;
+		var alive;
+
+		// parts of the sentence 
+		var part;
+		var parts = Array();
+
+		// story starts here
+		var loc = 'cuarto';
+
+		// command list 
+		var hist = map[loc]['commands'];		
+		var hi = -1;
+
+		// inventario
+		var inv = [];
+		var invcount = 0;
+		var invmax = 5;
+
+		// wait time range for the movements of the woman
+		// is it needed anymore
+		var minwait = 1000;
+		var maxwait = 10000;	
+
+		// this is the start function, as soon as the document is ready show the room
+		$(document).ready(function () {
+			hist.unshift("ayuda");
+			line = document.forms[0].l1;
+			line2 = document.getElementById("l2");
+			scr = document.getElementById('screen');
+			live();
+		});
+
+		// screen handling crap 
+		function new_line(){
+			var p = document.createElement('pre');
+			var v = line.value;
+			var ti = v;
+
+			v = v.replace(/&/,'&amp;');
+			v = v.replace(/</,'&lt;');
+			if (! v) {
+				v = '<br />';
+			}
+			p.innerHTML = '>' + v;
+			scr.appendChild(p);
+
+			interpret(ti);
+
+			line.value = '';
+			line.focus();
+			$("html, body").animate({ scrollTop: $(document).height() }, "slow");
+
+			return false;
+		}
+		
+		function setFocus() {
+			if (alive) {
+				document.forms[0].l1.focus();
+			}
+			else {
+				line2.focus();
+			}
+		}
+
+		// show the valid commands
+		function handle(e) {
+			if (e.keyCode == 38) {
+				hi = hi >= 1 ? hi - 1 : hist.length - 1;
+				line.value = hist[hi];
+			}
+
+			if (e.keyCode == 40) {
+				hi = hi < hist.length - 1 ? hi + 1 : 0;
+				line.value = hist[hi];
+			}
+
+			if (e.keyCode == 9) {
+				line.focus();
+				$("html, body").animate({ scrollTop: $(document).height() }, "slow");
+			}
+
+			return true;
+		}
+		
+		function oneKey(e) {
+			if (e.key == 'y' || e.key == 'Y') {
+				$("#deadWrapper").hide();
+				$("#commandLine").show();
+				live();
+			}
+			else {
+				window.close();
+			}
+			
+			return false;
+		}
+	</script>
+</body>
+</html>

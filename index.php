@@ -95,21 +95,29 @@ function bennettapp($args)
 		"RESULT" => ""
 	];
 
-	if (isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
+	if (// isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
 		isset($args['editordata']) && !empty($args['editordata'])) {
 		
-		$output = json_decode(
-			file_get_contents(
-				"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
-				"&response=" . $args['g-recaptcha-response']
-			), 
-			true
-		);
+		// $output = json_decode(
+		// 	file_get_contents(
+		// 		"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
+		// 		"&response=" . $args['g-recaptcha-response']
+		// 	), 
+		// 	true
+		// );
 
-		if (isset($output['success']) && $output['success'] == true) {
+		// if (isset($output['success']) && $output['success'] == true) {
+
 			$fullText = utf8_encode($args['editordata']);
-			$_("insertid: INSERT INTO bennettapp (verse, more) VALUES ('?', '?')", [$fullText, ""]);
+			$_("insertid: INSERT INTO bennettapp (verse, more) VALUES (?, ?)", [$fullText, ""]);
 
+			// remove all the tags, insert the \n
+			// $breaks = array("<br />","<br>","<br/>","</p><p>","</p>\n<p>");
+			// $fullText = str_ireplace($breaks, "\r\n", $args['editordata']); 
+			// $fullText = strip_tags($fullText);
+			// $fullText = utf8_encode($fullText);
+
+			// remove the <p> and leave the <span>
 			// preg_match_all('#<p(.+?)</p>#is', $fullText, $matches); 
 			// foreach ($matches[0] as $m) {
 			// 	$i = $_("insertid: INSERT INTO bennettapp (verse, more) VALUES ('?', '?')", [$m, ""]);
@@ -121,7 +129,7 @@ function bennettapp($args)
 			// 		}
 			// 	}
 			// } 
-		}
+		// }
 	}
 	else if (isset($args['verseId']) && !empty($args['verseId'])) {
 		$_(": DELETE FROM bennettapp WHERE id = ?", [$args['verseId']]);
@@ -158,82 +166,16 @@ function poemBennettApp()
 	$verses = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
 
 	if (count($verses)) {
-		$many = rand(5, 12);
+		$many = rand(5, count($verses) < 12 ? count($verses) : 12);
 		for ($c = 0; $c < $many; $c++) {
-			while (in_array(($i = rand(1, count($verses)) - 1), $used)) {}
+			while (in_array(($i = rand(1, count($verses)) - 1), $used));
 			$poem[] = utf8_decode($verses[$i]['verse']);
 			$used[] = $i;
 		}
 	}
-
+	
 	$results = [
 		"OUTPUT" => json_encode($poem)
-	];
-
-	return $results;
-}
-
-function egoApp($args) 
-{
-	global $_;
-
-	$recaptcha = $_("getConfig: recaptcha");
-
-	$results = [
-		"SITE_KEY" => $recaptcha['siteKey'],
-		"RESULT" => "",
-		"TABLE"  => ""
-	];
-
-	if (isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
-		isset($args['editordata']) && !empty($args['editordata'])) {
-	
-		$output = json_decode(
-			file_get_contents(
-				"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
-				"&response=" . $args['g-recaptcha-response']
-			), 
-			true
-		);
-
-		if (isset($output['success']) && $output['success'] == true) {	
-			$_(": INSERT INTO egoapp (quote, more) VALUES ('?', '?')", [$args['editordata'], ""]);
-		}
-	}
-	else if (isset($args['quoteId']) && !empty($args['quoteId'])) {
-		$_(": DELETE FROM egoapp WHERE id = ?", [$args['quoteId']]);
-	}
-
-	$quotes = $_("assoclist: SELECT * FROM egoapp ORDER BY id DESC");
-
-	if ($quotes) {
-		$results['TABLE'] = '<table class="u-full-width">
-								<thead>
-								<tr>
-									<th>Quote</th>
-									<th>Action</th>
-								</tr>
-								</thead>
-								<tbody>';
-		foreach ($quotes as $quote) {
-			$results['TABLE'] .= '<tr><td><pre><code>' . $quote['quote'] . '</code></pre></td>' .
-								 '<td><a class="button-primary" href="/86698f625e85131b9aba4952f4aa2b7d632391c7?quoteId='.$quote['id'].'">Del</a></td></tr>';
-		}
-
-		$results['TABLE'] .= '</tbody></table>';
-	}
-
-	return $results;
-}
-
-function listEgoApp()
-{
-	global $_;
-
-	$quotes = $_("assoclist: SELECT * FROM egoapp ORDER BY id DESC");
-
-	$results = [
-		"OUTPUT" => json_encode($quotes)
 	];
 
 	return $results;

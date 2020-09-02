@@ -274,7 +274,7 @@ class Database
 			$args = $this->sanitize($args);
 			$i = 0;
 			while(($letterPos = strpos($query, '?')) !== false) {
-				$query = substr_replace($query, $args[$i], $letterPos, 1);
+				$query = substr_replace($query, "'" . $args[$i] . "'", $letterPos, 1);
 				$i++;
 				if ($i >= count($args)) 
 					break;
