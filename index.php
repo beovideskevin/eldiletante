@@ -97,7 +97,6 @@ function bennettapp($args)
 
 	if (// isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
 		isset($args['editordata']) && !empty($args['editordata'])) {
-		
 		// $output = json_decode(
 		// 	file_get_contents(
 		// 		"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
@@ -105,37 +104,25 @@ function bennettapp($args)
 		// 	), 
 		// 	true
 		// );
-
 		// if (isset($output['success']) && $output['success'] == true) {
-
-			$fullText = utf8_encode($args['editordata']);
+			$fullText = $args['editordata']; // utf8_encode($args['editordata']);
 			$_("insertid: INSERT INTO bennettapp (verse, more) VALUES (?, ?)", [$fullText, ""]);
-
-			// remove all the tags, insert the \n
-			// $breaks = array("<br />","<br>","<br/>","</p><p>","</p>\n<p>");
-			// $fullText = str_ireplace($breaks, "\r\n", $args['editordata']); 
-			// $fullText = strip_tags($fullText);
-			// $fullText = utf8_encode($fullText);
-
-			// remove the <p> and leave the <span>
-			// preg_match_all('#<p(.+?)</p>#is', $fullText, $matches); 
-			// foreach ($matches[0] as $m) {
-			// 	$i = $_("insertid: INSERT INTO bennettapp (verse, more) VALUES ('?', '?')", [$m, ""]);
-			// 	if ($i) {
-			// 		$res = $_("assoc: SELECT * FROM bennettapp WHERE id = ?", [$i]);
-			// 		if (isset($res['verse'])) {
-			// 			$verse = utf8_decode($res['verse']);
-			// 			$results['RESULT'] .= $verse;
-			// 		}
-			// 	}
-			// } 
 		// }
 	}
-	else if (isset($args['verseId']) && !empty($args['verseId'])) {
-		$_(": DELETE FROM bennettapp WHERE id = ?", [$args['verseId']]);
-	}
-
+	
+	// Get all the verses
 	$verses = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
+	
+	// Check if we want to delete one
+	if (isset($args['verseId']) && !empty($args['verseId'])) {
+		foreach ($verses as $index => $verse) {
+			if (sha1($verse['id']) == $args['verseId']) {
+				$_(": DELETE FROM bennettapp WHERE id = ?", [$verse['id']]);
+				unset($verses[$index]);
+				break;
+			}
+		}
+	}
 
 	if ($verses) {
 		$results['TABLE'] = '<table class="u-full-width">
@@ -147,10 +134,10 @@ function bennettapp($args)
 								</thead>
 								<tbody>';
 		foreach ($verses as $v) {
-			$results['TABLE'] .= '<tr><td><pre><code>' . utf8_decode($v['verse']) . '</code></pre></td>' .
-								 '<td><a class="button-primary" href="/390e53ab5ee8a5e7032be0121864ca121cfa3ff1?verseId='.$v['id'].'">Del</a></td></tr>';
+			$results['TABLE'] .= '<tr><td><pre><code>' . $v['verse'] . '</code></pre></td>' . // utf8_decode($v['verse'])
+								 '<td><a class="button-primary" href="/390e53ab5ee8a5e7032be0121864ca121cfa3ff1?verseId=' .
+								 sha1($v['id']) . '">Del</a></td></tr>';
 		}
-
 		$results['TABLE'] .= '</tbody></table>';
 	}
 
@@ -166,10 +153,12 @@ function poemBennettApp()
 	$verses = $_("assoclist: SELECT * FROM bennettapp ORDER BY id DESC");
 
 	if (count($verses)) {
-		$many = rand(5, count($verses) < 12 ? count($verses) : 12);
+		$min = count($verses) <= 5 ? 0 : 5; 
+		$max = count($verses) <= 12 ? count($verses) : 12;
+		$many = rand($min, $max);
 		for ($c = 0; $c < $many; $c++) {
 			while (in_array(($i = rand(1, count($verses)) - 1), $used));
-			$poem[] = utf8_decode($verses[$i]['verse']);
+			$poem[] = $verses[$i]['verse']; // utf8_decode($verses[$i]['verse']);
 			$used[] = $i;
 		}
 	}

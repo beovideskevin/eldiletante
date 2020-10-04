@@ -17,23 +17,16 @@
         <link rel="shortcut icon" href="../../../../style/images/favicon.ico" type="image/x-icon">
 
         <script src="../../../common/jquery-1.11.3.min.js" type="text/javascript"></script>
-        <link href="/style/css/skeleton.min.css" rel="stylesheet">
+        <script src="../../../common/p5/p5.js"></script>
+        <script src="../../../common/p5/addons/p5.dom.js"></script> 
         <style>
             body { 
-                padding: 1.5em 0;
+                padding: 10px;
                 background-color: #ffffff; 
-            }
-
-            p {
-                margin-bottom: 0;
             }
 		</style>
     </head>
     <body>
-        <div class="container">
-            <div id="poem"></div>
-        </div>
-        
         <script>
             var versesWithFormat = [];                
             var fontArr = ["serif",	"sans-serif", "monospace"];
@@ -41,6 +34,20 @@
             var weightArr = ["normal", "bold", "normal", "italic", "normal"];
             var alignArr = ["left", "right", "center"];
             var gridArr = ["1", "2", "3", "4"];
+
+            function setup() {
+                var cnv = createCanvas(window.innerWidth - 40, window.innerHeight - 40);
+            }
+
+            function draw() {
+                background(220);
+                if (versesWithFormat.length > 0) {
+                    textFont(versesWithFormat[0].style.font);
+                    textSize(versesWithFormat[0].style.size);
+                    text(versesWithFormat[0].text, 12, 60);
+                }
+                
+            }
 
             $(document).ready(function () {
                 $.ajax("/poemBennett")
@@ -50,11 +57,6 @@
                     html = "";
                     verses = JSON.parse(data);
                     formatVerses(verses);
-
-                    if (verses.length > 0) {
-                        var html = verses[0];
-                        $("#poem").html(html);
-                    }
                 })
                 .fail(function() {
                     alert("Error connecting to eldiletantedigital.com.\nCheck your network and refresh, please.");
