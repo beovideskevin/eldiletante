@@ -25,7 +25,8 @@
             }
 
             p {
-                margin-bottom: 0;
+                /* margin-bottom: 0; */
+                margin-left: 0px !important;
             }
 		</style>
     </head>
@@ -35,13 +36,6 @@
         </div>
         
         <script>
-            var versesWithFormat = [];                
-            var fontArr = ["serif",	"sans-serif", "monospace"];
-            var sizeArr = ["12", "16", "20", "24", "28"];
-            var weightArr = ["normal", "bold", "normal", "italic", "normal"];
-            var alignArr = ["left", "right", "center"];
-            var gridArr = ["1", "2", "3", "4"];
-
             $(document).ready(function () {
                 $.ajax("/poemBennett")
                 .done(function(data) {
@@ -62,20 +56,6 @@
                     alert("Error connecting to eldiletantedigital.com.\nCheck your network and refresh, please.");
                 })
             });
-
-            // function formatVerses(verses) {
-            //     for (var i = 0; i < verses.length; i++) {
-            //         newNode = {text: "", style: {}};
-            //         newNode.text = verses[i];
-            //         newNode.style.font = fontArr[Math.round((fontArr.length - 1) * Math.random())];
-            //         newNode.style.size = sizeArr[Math.round((sizeArr.length - 1) * Math.random())];
-            //         newNode.style.weight = weightArr[Math.round((weightArr.length - 1) * Math.random())];
-            //         newNode.style.align = alignArr[Math.round((alignArr.length - 1) * Math.random())];
-            //         newNode.style.grid = gridArr[Math.round((gridArr.length - 1) * Math.random())];
-            //         versesWithFormat.push(newNode);
-            //     }
-            //     console.log(versesWithFormat);
-            // }
 
         </script>
     </body>
