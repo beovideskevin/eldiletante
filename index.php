@@ -95,19 +95,19 @@ function bennettapp($args)
 		"RESULT" => ""
 	];
 
-	if (// isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
+	if (isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
 		isset($args['editordata']) && !empty($args['editordata'])) {
-		// $output = json_decode(
-		// 	file_get_contents(
-		// 		"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
-		// 		"&response=" . $args['g-recaptcha-response']
-		// 	), 
-		// 	true
-		// );
-		// if (isset($output['success']) && $output['success'] == true) {
+		$output = json_decode(
+			file_get_contents(
+				"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
+				"&response=" . $args['g-recaptcha-response']
+			), 
+			true
+		);
+		if (isset($output['success']) && $output['success'] == true) {
 			$fullText = $args['editordata']; // utf8_encode($args['editordata']);
 			$_("insertid: INSERT INTO bennettapp (verse, more) VALUES (?, ?)", [$fullText, ""]);
-		// }
+		}
 	}
 	
 	// Get all the verses
