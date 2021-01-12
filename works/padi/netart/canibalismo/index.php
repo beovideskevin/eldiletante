@@ -2,7 +2,7 @@
 
 require('../../../../$_.php');
 
-$_("config", "../../../../config.json");
+$_("config", "../../../../config");
 $_("connect");
 
 $small_array = ["a", "ante", "bajo", "cabe", "con", "contra", "de", "desde", "durante", "en", "entre", "hacia", "hasta", 
@@ -35,13 +35,13 @@ if ( ! empty($args['topic'])) {
 			continue;
 		}
 		
-		$words[$index] = strtolower($words[$index]);
+		$words[$index] = "%" . strtolower($words[$index]) . "%";
 
 		if (! empty($query)) {
 			$query .= " OR ";
 		} 
 
-		$query .= " lower(`text`) LIKE '%?%' ";
+		$query .= " lower(`text`) LIKE ? ";
 	}
 
 	if (! empty($words)) {
