@@ -190,7 +190,7 @@ function nft($args) {
 				true
 			);
 			if (isset($output['success']) && $output['success'] == true) {
-				$fullText = preg_replace("/[^a-z]/", "", strip_tags($args['editordata'])); 
+				$fullText = preg_replace("/[^a-z]/", "", strtolower(strip_tags($args['editordata']))); 
 	
 				$results["SCRIPTS_BOTTOM"] = $_("inject: /works/padi/netart/nft/js/nft.js", ["TEXT_CONTENT" => $fullText]);
 			}
