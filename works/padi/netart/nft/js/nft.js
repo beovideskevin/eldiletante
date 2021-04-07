@@ -1,8 +1,6 @@
 let sketch = function(p) {
     let content = '<:TEXT_CONTENT/>';
-    let w = $("#resultContainer").width();
-    let h = w / 0.666;
-    let imgWidth = w, imgHeight = h;
+    let imgWidth = $("#resultContainer").width(), imgHeight = $("#resultContainer").width() / 0.666;
 
     p.setup = function() {
         p.createCanvas(imgWidth, imgHeight);
