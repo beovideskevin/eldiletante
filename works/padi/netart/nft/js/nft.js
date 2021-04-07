@@ -2,13 +2,8 @@
 
 let sketch = function(p) {
     let content = '<:TEXT_CONTENT/>';
-
     let w = $("#resultContainer").width();
     let h = w / 0.666;
-
-    console.log(w);
-    console.log(h);
-
     let imgWidth = w, imgHeight = h;
 
     p.setup = function() {
