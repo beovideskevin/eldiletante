@@ -2,7 +2,14 @@
 
 let sketch = function(p) {
     let content = '<:TEXT_CONTENT/>';
-    let imgWidth = 720, imgHeight = 400;
+
+    let w = $("#resultContainer").width();
+    let h = w / 0.666;
+
+    console.log(w);
+    console.log(h);
+
+    let imgWidth = w, imgHeight = h;
 
     p.setup = function() {
         p.createCanvas(imgWidth, imgHeight);
@@ -13,8 +20,8 @@ let sketch = function(p) {
     p.draw = function() {
         p.background(0); 
 
-        for (var i = 0, y = 0; y < imgHeight; y++) {
-            for (var x = 0; x < imgWidth; x++, i+=3) {
+        for (var i = 0, y = 0; y < imgHeight; y+=10) {
+            for (var x = 0; x < imgWidth; x+=10, i+=3) {
                 var r = content.charCodeAt(i % content.length);
                 var g = content.charCodeAt((i+1) % content.length);
                 var b = content.charCodeAt((i+2) % content.length);
@@ -23,8 +30,8 @@ let sketch = function(p) {
                     p.map(g, 97, 122, 0, 0xff),
                     p.map(b, 97, 122, 0, 0xff)
                 );
-                p.strokeWeight(1); 
-                p.point(x, y);
+                p.strokeWeight(10); 
+                p.point(x+5, y+5);
             }
             
         }
@@ -33,6 +40,6 @@ let sketch = function(p) {
 };
 
 $(document).ready(function () {
-    new p5(sketch, 'resultContainer');
+  new p5(sketch, 'resultContainer');
 });
 
