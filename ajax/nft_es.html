@@ -1,0 +1,66 @@
+<div class="swiper-wrapper"> <a class="arrow-left" href="#"></a> <a class="arrow-right" href="#"></a>
+    <div class="swiper-container gallery">
+      <div class="swiper">
+        <div class="item">
+          <figure class="frame"><img src="/works/padi/netart/nft/images/img01.png" alt="" /></figure>
+        </div>
+        <!-- /.item -->
+        <div class="item">
+          <figure class="frame"><img src="/works/padi/netart/nft/images/img02.png" alt="" /></figure>
+        </div>
+        <!-- /.item -->
+        <div class="item">
+          <figure class="frame"><img src="/works/padi/netart/nft/images/img03.png" alt="" /></figure>
+        </div>
+        <!-- /.item -->
+        <div class="item">
+          <figure class="frame"><img src="/works/padi/netart/nft/images/img04.jpg" alt="" /></figure>
+        </div>
+        <!-- /.item -->
+      </div>
+      <!-- /.swiper -->
+    </div>
+    <!-- /.swiper-container -->
+  </div>
+  <!-- /.swiper-wrapper -->
+  
+  <div class="container inner">
+    <div class="box">
+        
+      <h1 class="post-title">NFTraductor</h1>
+      <p>En este trabajo se han convertido a imágenes los ensayos del libro en el que colaboré, usando las letras como colores. La operación transforma en arte el discurso
+        sobre el arte. La última capa de abstracción se logra al convertir las imágenes a NFT, introduciendo la encriptación en este proceso. Al anclar estas imágenes en el
+        blockchain se ha llevado el discurso estético sobre el arte digital al núcleo de la tecnología donde sólo quedan ecuaciones y números. Puede hacer sus propias imágenes 
+        siguiendo este <a href="/nft" target="_blank">vínculo</a>.</p>
+      <div class="divide10"></div>
+      <!-- <a href="#" class="btn">More Info</a> -->
+      
+    </div>
+    <!-- /.box -->
+  </div>
+  <!-- /.container -->
+  
+  <!-- INSERT PAGE SCRIPTS HERE -->
+  <script type="text/javascript">
+      $('.swiper-container.gallery').each(function(){
+            $(this).swiper({
+               grabCursor: true,
+              slidesPerView: 'auto',
+              wrapperClass: 'swiper',
+              slideClass: 'item',
+              offsetPxBefore: 0,
+               offsetPxAfter: 0
+            });
+          
+            var $swipers = $(this);
+          
+            $swipers.siblings('.arrow-left').click(function(){
+          $swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex-1);
+          return false;
+          });
+          $swipers.siblings('.arrow-right').click(function(){
+          $swipers.data('swiper').swipeTo($swipers.data('swiper').activeIndex+1);
+          return false;
+          });
+      });
+  </script>
