@@ -91,8 +91,7 @@ function bennettapp($args)
 	$recaptcha = $_("getConfig: recaptcha");
 
 	$results = [
-		"SITE_KEY" => $recaptcha['siteKey'],
-		"RESULT" => ""
+		"SITE_KEY" => $recaptcha['siteKey']
 	];
 
 	if (isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
@@ -166,6 +165,38 @@ function poemBennettApp()
 	$results = [
 		"OUTPUT" => json_encode($poem)
 	];
+
+	return $results;
+}
+
+function nft($args) {
+	global $_;
+
+	$recaptcha = $_("getConfig: recaptcha");
+
+	$results = [
+		"SITE_KEY"       => $recaptcha['siteKey'],
+		"SCRIPTS_HEAD"   => '<script src="/works/common/p5/p5.min.js"></script>',
+		
+	];
+
+	if (// isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
+		isset($args['editordata']) && !empty($args['editordata'])) {
+		// $output = json_decode(
+		// 	file_get_contents(
+		// 		"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
+		// 		"&response=" . $args['g-recaptcha-response']
+		// 	), 
+		// 	true
+		// );
+		// if (isset($output['success']) && $output['success'] == true) {
+			$fullText = preg_replace("/[^a-z]/", "", strip_tags($args['editordata'])); 
+
+			$results["SCRIPTS_BOTTOM"] = $_("inject: /works/padi/netart/nft/js/nft.js", ["TEXT_CONTENT" => $fullText]);
+		// }
+	}
+
+	error_log(print_r($results, true));
 
 	return $results;
 }
