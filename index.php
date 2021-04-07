@@ -180,20 +180,20 @@ function nft($args) {
 		
 	];
 
-	if (// isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
+	if (isset($args['g-recaptcha-response']) && $args['g-recaptcha-response'] &&
 		isset($args['editordata']) && !empty($args['editordata'])) {
-		// $output = json_decode(
-		// 	file_get_contents(
-		// 		"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
-		// 		"&response=" . $args['g-recaptcha-response']
-		// 	), 
-		// 	true
-		// );
-		// if (isset($output['success']) && $output['success'] == true) {
+		$output = json_decode(
+			file_get_contents(
+				"https://www.google.com/recaptcha/api/siteverify?secret=" . $recaptcha['secretKey'] .
+				"&response=" . $args['g-recaptcha-response']
+			), 
+			true
+		);
+		if (isset($output['success']) && $output['success'] == true) {
 			$fullText = preg_replace("/[^a-z]/", "", strip_tags($args['editordata'])); 
 
 			$results["SCRIPTS_BOTTOM"] = $_("inject: /works/padi/netart/nft/js/nft.js", ["TEXT_CONTENT" => $fullText]);
-		// }
+		}
 	}
 
 	error_log(print_r($results, true));
