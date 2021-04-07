@@ -1,5 +1,3 @@
-
-
 let sketch = function(p) {
     let content = '<:TEXT_CONTENT/>';
     let w = $("#resultContainer").width();
@@ -10,7 +8,6 @@ let sketch = function(p) {
         p.createCanvas(imgWidth, imgHeight);
         p.noLoop();
     }
-
 
     p.draw = function() {
         p.background(0); 
@@ -31,7 +28,6 @@ let sketch = function(p) {
             
         }
     }
-
 };
 
 $(document).ready(function () {
