@@ -23,7 +23,7 @@ let sketch = function(p) {
                     p.map(g, 97, 122, 0, 0xff),
                     p.map(b, 97, 122, 0, 0xff)
                 );
-                p.strokeWeight(10); 
+                p.strokeWeight(1); 
                 p.point(x, y);
             }
             
