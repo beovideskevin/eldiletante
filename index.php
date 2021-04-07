@@ -175,6 +175,7 @@ function nft($args) {
 	$recaptcha = $_("getConfig: recaptcha");
 
 	$results = [
+		"TITLE"          => $_("getlang: PORTFOLIO_NFT"),
 		"SITE_KEY"       => $recaptcha['siteKey'],
 		"SCRIPTS_HEAD"   => '<script src="/works/common/p5/p5.min.js"></script>'
 	];
