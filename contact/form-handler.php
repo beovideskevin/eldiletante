@@ -3,30 +3,29 @@
 	session_start();
 
     $emailto = 'contact@eldiletante.com';
-	$emailfrom =  "info@eldiletantedigital.com";
-    
-	// retrieve from parameters
-	
 	$nocomment = isset($_POST["nocomment"]) ? $_POST["nocomment"] : "";
 	$subject = 'Email from edd';
+	$emailfrom =  "info@eldiletante.com";
 	$message = '';
 	$response = '';
 	$response_fail = (empty($_SESSION['LANGUAGE_IN_USE']) || $_SESSION['LANGUAGE_IN_USE'] == 'es') ? 'Error. Verifique todos los campos del formulario y vuelva a intentarlo, por favor.' : 'Error. Please verify the form fields and try again.';
 	
 	if (isset($_POST['g-recaptcha-response'])) {
 		$output = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LeZ0AYTAAAAAEEf5jI7YkobkyE60xxfv9tT4nNm&response=".$_POST['g-recaptcha-response']), true);
-		//print_r($output);
 		if (isset($output['success']) && $output['success'] == true) {
 			// Honeypot captcha
 			if($nocomment == '') {			
 				$params = $_POST;
 				foreach ( $params as $key=>$value ) {
-				
 					if(!($key == 'g-recaptcha-response' || $key == 'ip' || $key == 'emailsubject' || $key == 'url' || $key == 'emailto' || $key == 'nocomment' || $key == 'v_error' || $key == 'v_email')){
-					
 						$key = ucwords(str_replace("-", " ", $key));
-						
-						if ( gettype( $value ) == "array" ){
+						if ($key == 'email') {
+							$emailfrom = $value;
+						}
+						elseif ($key == 'subject') {
+							$subject = $value;
+						}	
+						elseif ( gettype( $value ) == "array" ){
 							$message .= "$key: \n";
 							foreach ( $value as $two_dim_value ) {
 								$message .= "...$two_dim_value<br>";
@@ -37,7 +36,6 @@
 						}
 					}
 				}
-				
 				$response = sendEmail($subject, $message, $emailto, $emailfrom);
 			} 
 			else {
