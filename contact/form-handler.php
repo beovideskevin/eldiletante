@@ -19,10 +19,10 @@
 				foreach ( $params as $key=>$value ) {
 					if(!($key == 'g-recaptcha-response' || $key == 'ip' || $key == 'emailsubject' || $key == 'url' || $key == 'emailto' || $key == 'nocomment' || $key == 'v_error' || $key == 'v_email')){
 						$key = ucwords(str_replace("-", " ", $key));
-						if ($key == 'email') {
+						if ($key == 'v_email') {
 							$emailfrom = $value;
 						}
-						elseif ($key == 'subject') {
+						elseif ($key == 'emailsubject') {
 							$subject = $value;
 						}	
 						elseif ( gettype( $value ) == "array" ){
