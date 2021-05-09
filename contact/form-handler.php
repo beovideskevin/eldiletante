@@ -17,15 +17,15 @@
 			if($nocomment == '') {			
 				$params = $_POST;
 				foreach ( $params as $key=>$value ) {
-					if(!($key == 'g-recaptcha-response' || $key == 'ip' || $key == 'emailsubject' || $key == 'url' || $key == 'emailto' || $key == 'nocomment' || $key == 'v_error' || $key == 'v_email')){
+					if ($key == 'email') {
+						$emailfrom = $value;
+					}
+					elseif ($key == 'subject') {
+						$subject = $value;
+					}	
+					elseif (!($key == 'g-recaptcha-response' || $key == 'ip' || $key == 'emailsubject' || $key == 'url' || $key == 'emailto' || $key == 'nocomment' || $key == 'v_error' || $key == 'v_email')) {
 						$key = ucwords(str_replace("-", " ", $key));
-						if ($key == 'v_email') {
-							$emailfrom = $value;
-						}
-						elseif ($key == 'emailsubject') {
-							$subject = $value;
-						}	
-						elseif ( gettype( $value ) == "array" ){
+						if ( gettype( $value ) == "array" ){
 							$message .= "$key: \n";
 							foreach ( $value as $two_dim_value ) {
 								$message .= "...$two_dim_value<br>";
