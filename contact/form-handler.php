@@ -5,7 +5,7 @@
     $emailto = 'contact@eldiletante.com';
 	$nocomment = isset($_POST["nocomment"]) ? $_POST["nocomment"] : "";
 	$subject = 'Email from edd';
-	$emailfrom =  "info@eldiletante.com";
+	$emailfrom =  "contact@eldiletante.com";
 	$message = '';
 	$response = '';
 	$response_fail = (empty($_SESSION['LANGUAGE_IN_USE']) || $_SESSION['LANGUAGE_IN_USE'] == 'es') ? 'Error. Verifique todos los campos del formulario y vuelva a intentarlo, por favor.' : 'Error. Please verify the form fields and try again.';
