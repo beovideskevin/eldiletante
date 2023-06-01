@@ -403,7 +403,7 @@ nav ul ul ul li {
 /*  05. PARALLAX
 /*-----------------------------------------------------------------------------------*/
 .parallax {
-    background-image: url(../images/parallax1.jpg); /* parallax6.webp */
+    background-image: url(../images/parallax1.webp); /* parallax6.webp */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
