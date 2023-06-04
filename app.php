@@ -204,7 +204,6 @@ function sendEmail ($args = [])
 			), 
 			true
 		);
-		print_r($output);
 		if (isset($output['success']) && $output['success'] == 1 && 
 			$_(
 				"email: contact@eldiletante.com", 
