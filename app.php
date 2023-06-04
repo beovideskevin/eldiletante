@@ -205,16 +205,14 @@ function sendEmail ($args = [])
 			true
 		);
 		print_r($output);
-		if (isset($output['success']) && $output['success'] == true && 
+		if (isset($output['success']) && $output['success'] == 1 && 
 			$_(
 				"email: contact@eldiletante.com", 
 				[
-					"subject"   => "Email from eldiletante.com", 
-					"emailfrom" => $args['email'],
-					"namefrom"  => $args['name']
+					"subject"   => "Email from eldiletante.com"
 				], 
 				[
-					"OUTPUT" => $args['message'] . "<br>Origin: eldiletante.com" 
+					"OUTPUT" => "name: " . $args['name'] . "<br>" . "email: " . $args['email'] . "<br>" . $args['message'] . "<br>Origin: eldiletante.com" 
 				]
 				))
 			{
