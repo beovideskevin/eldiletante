@@ -426,7 +426,7 @@ nav ul ul ul li {
 /*Border bottom parallax*/
 .item-category .border div {
     height: 25px;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     top: auto;
     background: url(../images/border.svg) repeat-x 100% 100%;
@@ -1242,8 +1242,8 @@ textarea.form-control {
         top: -1px;
     }
     .item-category .border div {
-        /* height: 20px; */
-        bottom: 0px; 
+        /* height: 20px; 
+        bottom: 0px; */
     }
 }
 @media (max-width: 760px) and (orientation : portrait) {
