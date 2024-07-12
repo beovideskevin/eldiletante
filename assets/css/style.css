@@ -425,7 +425,7 @@ nav ul ul ul li {
 }
 /*Border bottom parallax*/
 .item-category .border div {
-    height: 25px;
+    height: 20px;
     bottom: 0;
     left: 0;
     top: auto;
@@ -1242,7 +1242,7 @@ textarea.form-control {
         top: -1px;
     }
     .item-category .border div {
-        height: 21px; 
+        height: 20px; 
         bottom: -1px; 
     }
 }
