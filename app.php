@@ -206,7 +206,7 @@ function sendEmail ($args = [])
 		);
 		if (isset($output['success']) && $output['success'] == 1 && 
 			$_(
-				"email: beovideskevin@gmail.com", 
+				"email: contact@eldiletante.com", 
 				[
 					"subject"   => "Email from eldiletante.com"
 				], 
