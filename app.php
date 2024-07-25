@@ -228,7 +228,8 @@ function sendEmail ($args = [])
 // Route /404
 function notFound ($args = []) 
 {
+	global $_;
 	error_log('WOW (404): ' . print_r($args, true));
 	error_log('IP: ' . getRealIpAddr());
-	return indexPage($args);
+	header("location: " . $_("getconfig: WEBSITE"));
 }
