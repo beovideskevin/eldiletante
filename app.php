@@ -231,5 +231,7 @@ function notFound ($args = [])
 	global $_;
 	error_log('WOW (404): ' . print_r($args, true));
 	error_log('IP: ' . getRealIpAddr());
+	header("HTTP/1.1 301 Moved Permanently");
 	header("location: " . $_("getconfig: WEBSITE"));
+	exit;
 }
