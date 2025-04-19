@@ -1,0 +1,6 @@
+User-agent: *
+Crawl-delay: 30
+Allow: /
+Disallow: /aArt.eldiletante.com/
+Disallow: /ar.eldiletante.com/
+Disallow: /dollarlib.eldiletante.com/
